@@ -1,0 +1,284 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{box-sizing:border-box}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style></head><body>
+<title>Via Olfatória Passo a Passo</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+/* Layout: palco de ilustração médica largo + painel da etapa com medidores; trilho de etapas embaixo (mesmo padrão do barorreflexo aprovado). */
+:root{
+  --bg:#EEF2F6; --surface:#FFFFFF; --fg:#16212E; --muted:#56657A; --line:#D3DCE6;
+  --accent:#0B2A4E; --accent-soft:#E2EBF6; --hi:#D9A21B; --hi-soft:#FBF1D6;
+  --sym:#C0392B; --para:#2F80C8; --aff:#0E7C7B; --pur:#7B4FB0; --grn:#3E9A4F;
+  --stage-a:#FDFEFF; --stage-b:#E9EFF5; --tissue:#F6E7E2; --tissue-line:#E6CFC7;
+  --brain-a:#F4EEF8; --brain-b:#E2D5EC; --brain-line:#A893BC;
+  --bone-a:#F3EBD8; --bone-b:#D9C9A6; --mucus:#DDEFF3; --cyto-a:#FFF4F2; --cyto-b:#F7D9D3;
+  --node-a:#FFFFFF; --node-b:#EDE6F3; --node-ink:#1E2B3A;
+  --nerve-case:#F7EFD9; --label-bg:rgba(255,255,255,.92); --label-line:#CBD5E1; --ink:#1E2B3A; --ink-soft:#5B6B7E;
+  --display:"Bricolage Grotesque", "Trebuchet MS", system-ui, sans-serif;
+  --body:"Atkinson Hyperlegible", "Segoe UI", system-ui, sans-serif;
+  --mono:"JetBrains Mono", ui-monospace, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#0E141B; --surface:#17202A; --fg:#E5ECF3; --muted:#9AABBE; --line:#2A3746;
+  --accent:#8DB6E8; --accent-soft:#1D2B3C; --hi:#F0C04A; --hi-soft:#3A2F12;
+  --stage-a:#1A2430; --stage-b:#111921; --tissue:#2C2224; --tissue-line:#4A3538;
+  --brain-a:#2A2333; --brain-b:#211B29; --brain-line:#7D6A92;
+  --bone-a:#3A3428; --bone-b:#2A251C; --mucus:#1E3138; --cyto-a:#3A2A2C; --cyto-b:#2C1F21;
+  --node-a:#2F3B4A; --node-b:#1E2733; --node-ink:#F2F6FA;
+  --nerve-case:#3A3527; --label-bg:rgba(23,32,42,.92); --label-line:#3A4A5C; --ink:#E3EAF2; --ink-soft:#A3B3C4; color-scheme:dark } }
+:root[data-theme="dark"]{
+  --bg:#0E141B; --surface:#17202A; --fg:#E5ECF3; --muted:#9AABBE; --line:#2A3746;
+  --accent:#8DB6E8; --accent-soft:#1D2B3C; --hi:#F0C04A; --hi-soft:#3A2F12;
+  --stage-a:#1A2430; --stage-b:#111921; --tissue:#2C2224; --tissue-line:#4A3538;
+  --brain-a:#2A2333; --brain-b:#211B29; --brain-line:#7D6A92;
+  --bone-a:#3A3428; --bone-b:#2A251C; --mucus:#1E3138; --cyto-a:#3A2A2C; --cyto-b:#2C1F21;
+  --node-a:#2F3B4A; --node-b:#1E2733; --node-ink:#F2F6FA;
+  --nerve-case:#3A3527; --label-bg:rgba(23,32,42,.92); --label-line:#3A4A5C; --ink:#E3EAF2; --ink-soft:#A3B3C4; color-scheme:dark }
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:16px;line-height:1.5}
+.wrap{max-width:1180px;margin:0 auto;padding-block:20px 40px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:grid;gap:16px}
+header h1{font-family:var(--display);font-weight:800;font-size:clamp(1.5rem,3.2vw,2.2rem);line-height:1.1;margin:0;text-wrap:balance}
+header p{margin:.35rem 0 0;color:var(--muted);max-width:68ch}
+.main{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:16px;align-items:start}
+@media (max-width:860px){.main{grid-template-columns:minmax(0,1fr)}}
+.stage{border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:0 8px 28px rgba(11,42,78,.08);background:var(--stage-a)}
+.stage svg{display:block;width:100%;height:auto}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:16px;display:grid;gap:12px;min-width:0;box-shadow:0 8px 28px rgba(11,42,78,.06)}
+.eyebrow{font-family:var(--mono);font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:var(--para)}
+.panel h2{font-family:var(--display);font-weight:600;font-size:1.25rem;line-height:1.2;margin:0;text-wrap:balance}
+.panel .txt{margin:0}
+.tag{display:inline-block;font-size:.75rem;padding:2px 8px;border-radius:99px;border:1px solid var(--line);color:var(--muted);margin:0 4px 4px 0}
+.tag.ext{border-color:var(--hi);color:var(--fg);background:var(--hi-soft)}
+.meters{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.meters:empty{display:none}
+.meter{display:grid;grid-template-columns:26px 1fr;gap:8px;align-items:stretch}
+.bar{position:relative;height:124px;border-radius:9px;border:1px solid var(--line);background:repeating-linear-gradient(to top,var(--bg) 0 23px,var(--line) 23px 24px);overflow:hidden}
+.fill{position:absolute;left:3px;right:3px;bottom:3px;height:50%;border-radius:6px;transition:height .6s cubic-bezier(.3,.7,.3,1)}
+.meter strong{font-size:.9rem}
+.meter small{color:var(--muted);font-size:.78rem;display:block}
+.controls{display:flex;flex-wrap:wrap;gap:8px}
+button{font-family:var(--body);font-size:.95rem;border-radius:10px;border:1px solid var(--line);background:var(--surface);color:var(--fg);padding:8px 14px;cursor:pointer}
+button.primary{background:var(--accent);border-color:var(--accent);color:var(--surface);font-weight:700}
+button:focus-visible{outline:3px solid var(--hi);outline-offset:2px}
+button:disabled{opacity:.45;cursor:default}
+.rail{display:flex;flex-wrap:wrap;gap:6px}
+.rail button{padding:6px 10px;font-size:.82rem;display:flex;gap:6px;align-items:center}
+.rail button .n{font-family:var(--mono);color:var(--muted)}
+.rail button[aria-current="step"]{border-color:var(--accent);background:var(--accent-soft)}
+.rail button[aria-current="step"] .n{color:var(--accent)}
+.legend{display:flex;flex-wrap:wrap;gap:14px;font-size:.85rem;color:var(--muted)}
+.legend i{display:inline-block;width:18px;height:5px;border-radius:3px;margin-right:6px;vertical-align:3px}
+.legend b{display:inline-block;width:11px;height:11px;border-radius:50%;margin-right:6px;vertical-align:-1px}
+footer{font-size:.8rem;color:var(--muted);border-top:1px solid var(--line);padding-top:12px;display:grid;gap:4px}
+svg text{font-family:var(--body)}
+.lab-t{font-size:14px;font-weight:700;fill:var(--ink)}
+.lab-s{font-size:11.5px;fill:var(--ink-soft)}
+.nuc-t{font-size:13px;font-weight:700;fill:var(--node-ink)}
+.nerve .case{fill:none;stroke:var(--nerve-case);stroke-width:11;stroke-linecap:round}
+.nerve .ax{fill:none;stroke-width:4.5;stroke-linecap:round}
+.nerve{opacity:.3;transition:opacity .5s}
+.nerve.on{opacity:1}
+@media (prefers-reduced-motion: reduce){ .fill,.nerve{transition:none} }
+
+</style>
+
+<div class="wrap">
+  <header>
+    <h1>Do odor ao córtex piriforme</h1>
+    <p>Siga o sinal do epitélio olfatório até o córtex, passando pelo bulbo. O que muda em cada etapa fica destacado em dourado.</p>
+  </header>
+  <div class="main">
+    <div class="stage">
+      <svg id="svg" viewBox="0 0 1000 560" role="img" aria-label="Corte esquemático com epitélio olfatório, lâmina cribriforme, bulbo olfatório com glomérulos e células mitrais, trato olfatório até o córtex piriforme e ramos para tálamo mediodorsal, córtex orbitofrontal, amígdala, hipotálamo e hipocampo">
+        <defs>
+          <linearGradient id="gStage" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--stage-a)"/><stop offset="1" stop-color="var(--stage-b)"/></linearGradient>
+          <linearGradient id="gBrain" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--brain-a)"/><stop offset="1" stop-color="var(--brain-b)"/></linearGradient>
+          <linearGradient id="gBone" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--bone-a)"/><stop offset="1" stop-color="var(--bone-b)"/></linearGradient>
+          <radialGradient id="gCyto" cx=".4" cy=".3" r=".8"><stop offset="0" stop-color="var(--cyto-a)"/><stop offset="1" stop-color="var(--cyto-b)"/></radialGradient>
+          <radialGradient id="gNode" cx=".35" cy=".3" r=".8"><stop offset="0" stop-color="var(--node-a)"/><stop offset="1" stop-color="var(--node-b)"/></radialGradient>
+          <radialGradient id="gHalo"><stop offset="0" stop-color="var(--hi)" stop-opacity=".22"/><stop offset=".75" stop-color="var(--hi)" stop-opacity=".08"/><stop offset="1" stop-color="var(--hi)" stop-opacity="0"/></radialGradient>
+          <radialGradient id="gHeart" cx=".38" cy=".3" r=".8"><stop offset="0" stop-color="#E88A7E"/><stop offset=".55" stop-color="#C2463B"/><stop offset="1" stop-color="#7E2620"/></radialGradient>
+          <linearGradient id="gLumen" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#C9473D"/><stop offset=".45" stop-color="#F08B80"/><stop offset="1" stop-color="#C9473D"/></linearGradient>
+          <filter id="glow" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+          <filter id="soft" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#0B2A4E" flood-opacity=".14"/></filter>
+          <pattern id="pTissue" width="18" height="18" patternUnits="userSpaceOnUse"><circle cx="4" cy="4" r="1.2" fill="var(--tissue-line)"/><circle cx="13" cy="12" r="1" fill="var(--tissue-line)"/></pattern>
+          
+        </defs>
+        <rect width="1000" height="560" fill="url(#gStage)"/>
+        
+<path d="M360,232 C350,122 452,40 622,36 C802,32 952,112 960,232 C966,332 902,402 802,410 C762,413 742,432 732,472 L700,472 C690,432 652,412 602,402 C522,394 472,362 432,332 C392,302 366,272 360,232 Z" fill="url(#gBrain)" stroke="var(--brain-line)" stroke-width="2" filter="url(#soft)"/>
+<path d="M480,90 C560,140 700,120 800,160 M520,220 C600,200 700,240 820,230 M640,60 C650,120 640,200 660,250" fill="none" stroke="var(--brain-line)" stroke-width="1.3" opacity=".45"/>
+<rect x="40" y="470" width="300" height="72" fill="var(--stage-b)"/>
+<g id="odor">
+  <circle cx="80" cy="518" r="6" fill="#D9A21B"/><circle cx="120" cy="505" r="5" fill="#E07A5F"/><circle cx="165" cy="522" r="6" fill="#D9A21B"/>
+  <circle cx="210" cy="508" r="5" fill="#E07A5F"/><circle cx="255" cy="520" r="6" fill="#D9A21B"/><circle cx="300" cy="506" r="5" fill="#E07A5F"/>
+</g>
+<rect x="40" y="470" width="300" height="16" fill="var(--mucus)" opacity=".95"/>
+<rect x="40" y="398" width="300" height="72" fill="var(--tissue)"/>
+<rect x="40" y="398" width="300" height="72" fill="url(#pTissue)" opacity=".8"/>
+<g id="cells">
+  <g transform="translate(135 0)"><path d="M0,470 L0,452" stroke="#C26A8F" stroke-width="3"/><ellipse cx="0" cy="438" rx="10" ry="15" fill="#E8A3C0" stroke="#B0517A" stroke-width="1.6"/><circle cx="0" cy="474" r="3.5" fill="#B0517A"/><path d="M0,476 l-9,8 M0,476 l9,8 M0,476 l0,9" stroke="#B0517A" stroke-width="1.4"/></g>
+  <g transform="translate(190 0)"><path d="M0,470 L0,452" stroke="#C26A8F" stroke-width="3"/><ellipse cx="0" cy="438" rx="10" ry="15" fill="#E8A3C0" stroke="#B0517A" stroke-width="1.6"/><circle cx="0" cy="474" r="3.5" fill="#B0517A"/><path d="M0,476 l-9,8 M0,476 l9,8 M0,476 l0,9" stroke="#B0517A" stroke-width="1.4"/></g>
+  <g transform="translate(245 0)"><path d="M0,470 L0,452" stroke="#C26A8F" stroke-width="3"/><ellipse cx="0" cy="438" rx="10" ry="15" fill="#E8A3C0" stroke="#B0517A" stroke-width="1.6"/><circle cx="0" cy="474" r="3.5" fill="#B0517A"/><path d="M0,476 l-9,8 M0,476 l9,8 M0,476 l0,9" stroke="#B0517A" stroke-width="1.4"/></g>
+</g>
+<g opacity=".7"><ellipse cx="80" cy="452" rx="8" ry="12" fill="var(--cyto-b)"/><ellipse cx="300" cy="452" rx="8" ry="12" fill="var(--cyto-b)"/><ellipse cx="163" cy="458" rx="6" ry="9" fill="var(--cyto-b)"/><ellipse cx="218" cy="458" rx="6" ry="9" fill="var(--cyto-b)"/></g>
+<rect x="40" y="362" width="300" height="28" rx="5" fill="url(#gBone)" stroke="var(--bone-b)"/>
+<g fill="var(--stage-b)" stroke="var(--bone-b)"><rect x="115" y="362" width="12" height="28" rx="3"/><rect x="190" y="362" width="12" height="28" rx="3"/><rect x="264" y="362" width="12" height="28" rx="3"/></g>
+<ellipse cx="200" cy="305" rx="165" ry="52" fill="url(#gBrain)" stroke="var(--brain-line)" stroke-width="2" filter="url(#soft)"/>
+<g id="glom"><circle cx="112" cy="332" r="16" fill="#F3E3B5" stroke="#C9A44A" stroke-width="2"/><circle cx="200" cy="334" r="16" fill="#F3E3B5" stroke="#C9A44A" stroke-width="2"/><circle cx="288" cy="332" r="16" fill="#F3E3B5" stroke="#C9A44A" stroke-width="2"/></g>
+<g id="mitral" fill="#B57BC9" stroke="#7B4FB0" stroke-width="1.5">
+  <path d="M112,316 L104,296 L120,296 Z"/><path d="M200,318 L192,296 L208,296 Z"/><path d="M288,316 L280,296 L296,296 Z"/>
+  <path d="M112,296 C140,286 250,282 300,290" fill="none"/>
+</g>
+<g id="inter" fill="#5DA9E9" stroke="#2F6FAF" stroke-width="1.4">
+  <circle cx="156" cy="326" r="6"/><circle cx="244" cy="326" r="6"/><circle cx="156" cy="282" r="5.5"/><circle cx="244" cy="280" r="5.5"/>
+  <path d="M150,326 L128,330 M162,326 L184,332 M238,326 L216,332 M250,326 L272,330" fill="none"/>
+</g>
+
+        <g id="focus" opacity="0" pointer-events="none">
+          <ellipse id="fHalo" cx="150" cy="350" rx="110" ry="110" fill="url(#gHalo)"/>
+          <ellipse id="fRing" cx="150" cy="350" rx="90" ry="90" fill="none" stroke="var(--hi)" stroke-width="3" stroke-dasharray="9 7"/>
+        </g>
+        <g id="nerves"></g>
+        <g id="nuclei"></g>
+        <g id="fxTop"></g>
+        <g id="labels"></g>
+        <g id="pulses"></g>
+        <g id="note" opacity="0"><path id="noteBg" fill="var(--hi)"/><text id="noteTx" style="font-size:13.5px;font-weight:700;fill:#1B1B1B"></text></g>
+      </svg>
+    </div>
+    <aside class="panel" aria-live="polite">
+      <div class="eyebrow" id="eyebrow">Etapa 1</div>
+      <h2 id="ttl"></h2>
+      <p class="txt" id="txt"></p>
+      <div id="tags"></div>
+      <div class="meters" id="meters"></div>
+      <div class="controls">
+        <button id="prev" type="button">← Anterior</button>
+        <button id="replay" type="button">↻ Rever</button>
+        <button id="next" type="button" class="primary">Próxima →</button>
+        <button id="auto" type="button">▶ Tudo seguido</button>
+      </div>
+    </aside>
+  </div>
+  <nav class="rail" id="rail" aria-label="Etapas"></nav>
+  <div class="legend"><span><i style="background:var(--aff)"></i>I nervo craniano</span><span><i style="background:var(--pur)"></i>trato olfatório</span><span><i style="background:var(--para)"></i>via indireta (consciência)</span><span><i style="background:var(--sym)"></i>via límbica</span><span><b style="background:#5DA9E9"></b>interneurônio</span><span><i style="background:var(--hi)"></i>etapa ativa</span></div>
+  <footer><div>Conteúdo: aula de Sentidos Químicos (Prof. Marcelo, slides "Vias da olfação"); Purves et al., <em>Neurociências</em>, 4ª ed., cap. 15, Fig. 15.1 e 15.13. Siglas: PIR córtex piriforme; MD núcleo mediodorsal do tálamo; OFC córtex orbitofrontal; AMI amígdala; HPT hipotálamo; HPC hipocampo.</div><div>Ilustração esquemática desenhada para este Estudo Guiado.</div></footer>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script>
+(function(){
+const NS='http://www.w3.org/2000/svg';
+const $=id=>document.getElementById(id);
+const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+function el(tag,attrs,parent){const e=document.createElementNS(NS,tag);for(const k in attrs)e.setAttribute(k,attrs[k]);if(parent)parent.appendChild(e);return e}
+
+const NERVES={
+  I1:{d:'M135,424 C133,400 122,378 114,349',c:'var(--aff)'},
+  I2:{d:'M190,424 C190,402 197,378 200,351',c:'var(--aff)'},
+  I3:{d:'M245,424 C250,402 268,378 286,349',c:'var(--aff)'},
+  trato:{d:'M300,290 C360,280 420,282 470,290 C510,296 530,300 548,303',c:'var(--pur)'},
+  ind1:{d:'M594,286 C624,250 648,218 672,204',c:'var(--para)'},
+  ind2:{d:'M668,166 C612,118 540,110 472,118',c:'var(--para)'},
+  lim1:{d:'M520,300 C560,330 600,348 630,350',c:'var(--sym)'},
+  lim2:{d:'M676,336 C700,314 714,300 726,294',c:'var(--sym)'},
+  lim3:{d:'M598,320 C660,392 760,388 812,356',c:'var(--sym)'}
+};
+const NUC={PIR:[575,305,26,'PIR','var(--pur)'],MD:[690,185,24,'MD','var(--para)'],OFC:[445,120,26,'OFC','var(--para)'],AMI:[655,352,24,'AMI','var(--sym)'],HPT:[745,280,24,'HPT','var(--sym)'],HPC:[835,345,24,'HPC','var(--sym)']};
+const LABELS=[
+ [56,206,'Bulbo olfatório','1ª estação central (SNC)',110,258],
+ [372,318,'Glomérulos',null,306,332],
+ [384,240,'Trato olfatório',null,420,283],
+ [352,360,'Lâmina cribriforme','osso etmoide'],
+ [352,410,'Epitélio olfatório','NRO bipolares + muco'],
+ [352,492,'Ar com odorantes',null],
+ [486,470,'Córtex piriforme','córtex olfatório primário',566,331],
+ [722,136,'Tálamo — n. mediodorsal',null,706,170],
+ [470,52,'Córtex orbitofrontal',null,452,96],
+ [676,388,'Amígdala',null,672,370],
+ [782,212,'Hipotálamo',null,760,262],
+ [800,408,'Hipocampo',null,832,370]
+];
+const METERS=[];
+const STEPS=[
+ {t:'Odorante chega ao epitélio olfatório',r:'Odorante no epitélio',x:'O ar inspirado leva as moléculas odorantes ao teto da cavidade nasal. O muco dissolve o odorante e as proteínas ligantes o levam até os cílios dos neurônios receptores olfatórios (NRO).',tags:[['Aula 00:07:28',0]],on:[],f:[190,488,165,48],hot:[],note:[96,420,'odorante no muco'],odor:'in'},
+ {t:'NRO dispara no I par',r:'NRO dispara',x:'No cílio, o odorante ativa a cascata Golf → AMPc e o NRO despolariza. Os potenciais de ação correm pelos axônios amielínicos, que se reúnem em filetes: o I nervo craniano.',tags:[['Aula 00:05:23',0]],on:['I1','I2','I3'],sp:1.4,f:[190,412,115,52],hot:[],note:null,odor:'in',nro:1},
+ {t:'Filetes atravessam a lâmina cribriforme',r:'Lâmina cribriforme',x:'Os filetes passam pelos forames da lâmina cribriforme do etmoide. No TCE frontal, a desaceleração pode cisalhar esses filetes e causar anosmia.',tags:[['Prova: anosmia pós-TCE (Q06)',0]],on:['I1','I2','I3'],sp:1.4,f:[190,376,165,30],hot:[],note:[236,192,'cisalhamento no TCE → anosmia'],odor:'in',nro:1},
+ {t:'Sinapse com células mitrais no glomérulo',r:'Glomérulo',x:'No bulbo, cada axônio faz sinapse com os dendritos apicais das células mitrais (e tufosas) dentro de um glomérulo. Axônios de NRO com o mesmo receptor convergem para o mesmo glomérulo.',tags:[['Aula 00:08:45',0],['Purves, Fig. 15.13',0]],on:['I1','I2','I3'],sp:1.4,f:[200,318,140,38],hot:[],note:null,odor:'in',nro:1,glom:1,mitral:1},
+ {t:'Interneurônios afinam o sinal',r:'Interneurônios',x:'Células periglomerulares e granulares são interneurônios do bulbo, em geral inibitórios: aumentam o contraste e a especificidade do sinal antes de ele seguir para o SNC.',tags:[['Aula 00:09:41',0]],on:[],f:[200,304,105,40],hot:[],note:[236,192,'inibição → ↑ contraste'],odor:'in',glom:1,mitral:1,inter:1},
+ {t:'Trato olfatório leva ao piriforme',r:'Trato olfatório',x:'Os axônios das células mitrais formam o trato olfatório, que leva o sinal ao córtex piriforme, o córtex olfatório primário (3 camadas).',tags:[['Aula 00:19:35',0]],on:['trato'],sp:1.4,f:[425,295,160,48],hot:['PIR'],note:null,odor:'out',mitral:1},
+ {t:'Piriforme sem passar pelo tálamo',r:'Sem relé talâmico',x:'O sinal chega ao córtex primário sem relé no tálamo: é a única via sensorial assim. Cai em prova: "as mitrais projetam pelo núcleo ventral posterior do tálamo" é falso.',tags:[['Retorno P3 T16, Q03',0]],on:['trato'],sp:1.4,f:[575,305,58,58],hot:['PIR'],note:[704,214,'tálamo fica de fora aqui'],odor:'out',mitral:1},
+ {t:'Ramo indireto: mediodorsal → orbitofrontal',r:'Ramo indireto',x:'Depois do piriforme, parte da informação vai ao núcleo mediodorsal do tálamo e daí ao córtex orbitofrontal, onde o odor chega à consciência.',tags:[['Aula 00:20:28',0]],on:['ind1','ind2'],sp:1.4,f:[570,155,170,70],hot:['MD','OFC'],note:null,odor:'out'},
+ {t:'Ramo límbico: amígdala, hipotálamo, hipocampo',r:'Ramo límbico',x:'O trato também chega à amígdala, que se liga ao hipotálamo e ao hipocampo. Por isso um cheiro desperta emoção e memória, como o da comida da avó.',tags:[['Aula 00:21:35',0]],on:['lim1','lim2','lim3'],sp:1.4,f:[742,318,140,70],hot:['AMI','HPT','HPC'],note:null,odor:'out'}
+];
+function FX(s,d){
+  gsap.to('#odor',{y:s.odor==='in'?-36:0,opacity:s.odor==='in'?.85:1,duration:d,ease:'power2.out'});
+  gsap.set('#cells',{filter:s.nro?'url(#glow)':'none'});
+  gsap.set('#glom',{filter:s.glom?'url(#glow)':'none'});gsap.to('#glom',{opacity:s.glom?1:.7,duration:d});
+  gsap.set('#mitral',{filter:s.mitral?'url(#glow)':'none'});
+  gsap.set('#inter',{filter:s.inter?'url(#glow)':'none'});gsap.to('#inter',{scale:s.inter?1.25:1,transformOrigin:'50% 50%',duration:d*.6});
+}
+
+const gN=$('nerves');
+for(const k in NERVES){const n=NERVES[k];const g=el('g',{class:'nerve',id:'n_'+k},gN);
+  el('path',{class:'case',d:n.d},g);const ax=el('path',{class:'ax',d:n.d,stroke:n.c},g);n.ax=ax;n.g=g;
+  if(n.inib){const L=ax.getTotalLength(),p=ax.getPointAtLength(L),q=ax.getPointAtLength(L-6);const a=Math.atan2(p.y-q.y,p.x-q.x)+Math.PI/2;
+    el('line',{x1:p.x+11*Math.cos(a),y1:p.y+11*Math.sin(a),x2:p.x-11*Math.cos(a),y2:p.y-11*Math.sin(a),stroke:n.c,'stroke-width':5,'stroke-linecap':'round'},g);}}
+const gK=$('nuclei');
+for(const k in NUC){const [x,y,r,t,c]=NUC[k];const g=el('g',{id:'k_'+k},gK);
+  el('circle',{cx:x,cy:y,r:r+5,fill:c,opacity:.16},g);el('circle',{cx:x,cy:y,r,fill:'url(#gNode)',stroke:c,'stroke-width':2.5},g);
+  const parts=t.split(' ');if(parts.length>1){el('text',{x,y:y-2,'text-anchor':'middle',class:'nuc-t'},g).textContent=parts[0];el('text',{x,y:y+13,'text-anchor':'middle',class:'nuc-t'},g).textContent=parts[1];}
+  else el('text',{x,y:y+4.5,'text-anchor':'middle',class:'nuc-t'},g).textContent=t;}
+const gL=$('labels');
+function label(x,y,t,s,lx,ly){const g=el('g',{},gL);
+  if(lx!=null)el('path',{d:`M${x},${y} L${lx},${ly}`,stroke:'var(--label-line)','stroke-width':1.5,fill:'none'},g);
+  const bg=el('rect',{rx:8,fill:'var(--label-bg)',stroke:'var(--label-line)','stroke-width':1},g);
+  const t1=el('text',{x:x+10,y:y+(s?17:19),class:'lab-t'},g);t1.textContent=t;
+  let w=t1.getComputedTextLength();
+  if(s){const t2=el('text',{x:x+10,y:y+32,class:'lab-s'},g);t2.textContent=s;w=Math.max(w,t2.getComputedTextLength());}
+  bg.setAttribute('x',x);bg.setAttribute('y',y);bg.setAttribute('width',w+20);bg.setAttribute('height',s?40:28);}
+LABELS.forEach(a=>label(...a));
+const gP=$('pulses');const pulses=[];
+function setPulses(on,speed){pulses.forEach(p=>p.el.remove());pulses.length=0;if(reduce)return;
+  on.forEach(k=>{const n=NERVES[k];if(!n)return;const L=n.ax.getTotalLength();const cnt=Math.max(2,Math.round(L/110));
+    for(let i=0;i<cnt;i++){const c=el('circle',{r:5.2,fill:'#FFFFFF',stroke:n.c,'stroke-width':3,filter:'url(#glow)'},gP);pulses.push({el:c,ax:n.ax,L,off:i/cnt,v:speed*140/L});}});}
+gsap.ticker.add((t)=>{for(const p of pulses){const f=(t*p.v+p.off)%1;const pt=p.ax.getPointAtLength(f*p.L);p.el.setAttribute('cx',pt.x);p.el.setAttribute('cy',pt.y);p.el.setAttribute('opacity',f<.08?f/.08:f>.92?(1-f)/.08:1);}});
+const gM=$('meters');
+METERS.forEach((m,i)=>{const d=document.createElement('div');d.className='meter';d.setAttribute('aria-label',m.label+' ('+m.sub+')');
+  d.innerHTML=`<div class="bar"><div class="fill" id="fill${i}" style="background:${m.grad}"></div></div><div><strong>${m.label}</strong><small id="ml${i}"></small><small>${m.sub}</small></div>`;gM.appendChild(d);});
+let cur=0,auto=false;
+const rail=$('rail');
+STEPS.forEach((s,i)=>{const b=document.createElement('button');b.type='button';b.innerHTML=`<span class="n">${i+1}</span>${s.r||s.t}`;b.addEventListener('click',()=>{stopAuto();go(i)});rail.appendChild(b)});
+function setNote(n,instant){const g=$('note');gsap.killTweensOf(g);if(!n){gsap.to(g,{opacity:0,duration:instant?0:.2});return}
+  const tx=$('noteTx');tx.textContent=n[2];tx.setAttribute('x',n[0]+12);tx.setAttribute('y',n[1]+20);
+  const w=tx.getComputedTextLength()+24,x=n[0],y=n[1],h=30;
+  $('noteBg').setAttribute('d',`M${x+8},${y} h${w-16} a8,8 0 0 1 8,8 v${h-16} a8,8 0 0 1 -8,8 h${-(w-16)/2+7} l-7,8 l-7,-8 h${-(w-16)/2+7} a8,8 0 0 1 -8,-8 v${-(h-16)} a8,8 0 0 1 8,-8 z`);
+  if(instant||reduce){gsap.set(g,{opacity:1,y:0});return}gsap.fromTo(g,{opacity:0,y:6},{opacity:1,y:0,duration:.4,delay:.35});}
+function render(){const s=STEPS[cur];
+  $('eyebrow').textContent=`Etapa ${cur+1} de ${STEPS.length}`;$('ttl').textContent=s.t;$('txt').textContent=s.x;
+  $('tags').innerHTML=s.tags.map(t=>`<span class="tag${t[1]?' ext':''}">${t[1]?'Complemento externo · ':''}${t[0]}</span>`).join('');
+  METERS.forEach((m,i)=>{$('fill'+i).style.height=(s.m?s.m[i]:50)+'%';$('ml'+i).textContent=s.ml?s.ml[i]:'';});
+  [...rail.children].forEach((b,i)=>{if(i===cur)b.setAttribute('aria-current','step');else b.removeAttribute('aria-current')});
+  $('prev').disabled=cur===0;$('next').disabled=cur===STEPS.length-1;}
+function apply(s,instant){const d=instant||reduce?0:.9;
+  for(const k in NERVES)NERVES[k].g.classList.toggle('on',s.on.includes(k));
+  gsap.to('#focus',{opacity:1,duration:d});
+  gsap.to('#fHalo',{attr:{cx:s.f[0],cy:s.f[1],rx:s.f[2]+22,ry:s.f[3]+22},duration:d,ease:'power2.inOut'});
+  gsap.to('#fRing',{attr:{cx:s.f[0],cy:s.f[1],rx:s.f[2],ry:s.f[3]},duration:d,ease:'power2.inOut'});
+  for(const k in NUC){const on=s.hot.includes(k);gsap.set('#k_'+k,{filter:on?'url(#glow)':'none'});gsap.to('#k_'+k,{scale:on?1.1:1,svgOrigin:`${NUC[k][0]} ${NUC[k][1]}`,duration:d*.6});}
+  setPulses(s.on,s.sp||1);setNote(s.note,instant);FX(s,d,instant);}
+function go(i){cur=Math.max(0,Math.min(STEPS.length-1,i));render();
+  if(!reduce&&cur>0)apply(STEPS[cur-1],true);
+  requestAnimationFrame(()=>apply(STEPS[cur],false));
+  if(auto){clearTimeout(go.t);go.t=setTimeout(()=>{if(!auto)return;if(cur<STEPS.length-1)go(cur+1);else stopAuto()},4800)}}
+function stopAuto(){auto=false;clearTimeout(go.t);$('auto').textContent='▶ Tudo seguido'}
+$('next').addEventListener('click',()=>{stopAuto();go(cur+1)});
+$('prev').addEventListener('click',()=>{stopAuto();go(cur-1)});
+$('replay').addEventListener('click',()=>go(cur));
+$('auto').addEventListener('click',()=>{auto=!auto;$('auto').textContent=auto?'❚❚ Pausar':'▶ Tudo seguido';if(auto)go(cur===STEPS.length-1?0:cur);else stopAuto()});
+document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'){stopAuto();go(cur+1)}if(e.key==='ArrowLeft'){stopAuto();go(cur-1)}});
+render();apply(STEPS[0],true);
+})();
+</script>
+
+</body></html>

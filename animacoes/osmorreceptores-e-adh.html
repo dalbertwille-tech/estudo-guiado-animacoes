@@ -1,0 +1,265 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{box-sizing:border-box}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style></head><body>
+<title>Osmorreceptores e ADH</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+/* Layout: palco de ilustração médica largo + painel da etapa com medidores; trilho de etapas embaixo (mesmo padrão do barorreflexo aprovado). */
+:root{
+  --bg:#EEF2F6; --surface:#FFFFFF; --fg:#16212E; --muted:#56657A; --line:#D3DCE6;
+  --accent:#0B2A4E; --accent-soft:#E2EBF6; --hi:#D9A21B; --hi-soft:#FBF1D6;
+  --sym:#C0392B; --para:#2F80C8; --aff:#0E7C7B; --pur:#7B4FB0; --grn:#3E9A4F;
+  --stage-a:#FDFEFF; --stage-b:#E9EFF5; --tissue:#F6E7E2; --tissue-line:#E6CFC7;
+  --brain-a:#F4EEF8; --brain-b:#E2D5EC; --brain-line:#A893BC;
+  --bone-a:#F3EBD8; --bone-b:#D9C9A6; --mucus:#DDEFF3; --cyto-a:#FFF4F2; --cyto-b:#F7D9D3;
+  --node-a:#FFFFFF; --node-b:#EDE6F3; --node-ink:#1E2B3A;
+  --nerve-case:#F7EFD9; --label-bg:rgba(255,255,255,.92); --label-line:#CBD5E1; --ink:#1E2B3A; --ink-soft:#5B6B7E;
+  --display:"Bricolage Grotesque", "Trebuchet MS", system-ui, sans-serif;
+  --body:"Atkinson Hyperlegible", "Segoe UI", system-ui, sans-serif;
+  --mono:"JetBrains Mono", ui-monospace, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#0E141B; --surface:#17202A; --fg:#E5ECF3; --muted:#9AABBE; --line:#2A3746;
+  --accent:#8DB6E8; --accent-soft:#1D2B3C; --hi:#F0C04A; --hi-soft:#3A2F12;
+  --stage-a:#1A2430; --stage-b:#111921; --tissue:#2C2224; --tissue-line:#4A3538;
+  --brain-a:#2A2333; --brain-b:#211B29; --brain-line:#7D6A92;
+  --bone-a:#3A3428; --bone-b:#2A251C; --mucus:#1E3138; --cyto-a:#3A2A2C; --cyto-b:#2C1F21;
+  --node-a:#2F3B4A; --node-b:#1E2733; --node-ink:#F2F6FA;
+  --nerve-case:#3A3527; --label-bg:rgba(23,32,42,.92); --label-line:#3A4A5C; --ink:#E3EAF2; --ink-soft:#A3B3C4; color-scheme:dark } }
+:root[data-theme="dark"]{
+  --bg:#0E141B; --surface:#17202A; --fg:#E5ECF3; --muted:#9AABBE; --line:#2A3746;
+  --accent:#8DB6E8; --accent-soft:#1D2B3C; --hi:#F0C04A; --hi-soft:#3A2F12;
+  --stage-a:#1A2430; --stage-b:#111921; --tissue:#2C2224; --tissue-line:#4A3538;
+  --brain-a:#2A2333; --brain-b:#211B29; --brain-line:#7D6A92;
+  --bone-a:#3A3428; --bone-b:#2A251C; --mucus:#1E3138; --cyto-a:#3A2A2C; --cyto-b:#2C1F21;
+  --node-a:#2F3B4A; --node-b:#1E2733; --node-ink:#F2F6FA;
+  --nerve-case:#3A3527; --label-bg:rgba(23,32,42,.92); --label-line:#3A4A5C; --ink:#E3EAF2; --ink-soft:#A3B3C4; color-scheme:dark }
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:16px;line-height:1.5}
+.wrap{max-width:1180px;margin:0 auto;padding-block:20px 40px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:grid;gap:16px}
+header h1{font-family:var(--display);font-weight:800;font-size:clamp(1.5rem,3.2vw,2.2rem);line-height:1.1;margin:0;text-wrap:balance}
+header p{margin:.35rem 0 0;color:var(--muted);max-width:68ch}
+.main{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:16px;align-items:start}
+@media (max-width:860px){.main{grid-template-columns:minmax(0,1fr)}}
+.stage{border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:0 8px 28px rgba(11,42,78,.08);background:var(--stage-a)}
+.stage svg{display:block;width:100%;height:auto}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:16px;display:grid;gap:12px;min-width:0;box-shadow:0 8px 28px rgba(11,42,78,.06)}
+.eyebrow{font-family:var(--mono);font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:var(--para)}
+.panel h2{font-family:var(--display);font-weight:600;font-size:1.25rem;line-height:1.2;margin:0;text-wrap:balance}
+.panel .txt{margin:0}
+.tag{display:inline-block;font-size:.75rem;padding:2px 8px;border-radius:99px;border:1px solid var(--line);color:var(--muted);margin:0 4px 4px 0}
+.tag.ext{border-color:var(--hi);color:var(--fg);background:var(--hi-soft)}
+.meters{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.meters:empty{display:none}
+.meter{display:grid;grid-template-columns:26px 1fr;gap:8px;align-items:stretch}
+.bar{position:relative;height:124px;border-radius:9px;border:1px solid var(--line);background:repeating-linear-gradient(to top,var(--bg) 0 23px,var(--line) 23px 24px);overflow:hidden}
+.fill{position:absolute;left:3px;right:3px;bottom:3px;height:50%;border-radius:6px;transition:height .6s cubic-bezier(.3,.7,.3,1)}
+.meter strong{font-size:.9rem}
+.meter small{color:var(--muted);font-size:.78rem;display:block}
+.controls{display:flex;flex-wrap:wrap;gap:8px}
+button{font-family:var(--body);font-size:.95rem;border-radius:10px;border:1px solid var(--line);background:var(--surface);color:var(--fg);padding:8px 14px;cursor:pointer}
+button.primary{background:var(--accent);border-color:var(--accent);color:var(--surface);font-weight:700}
+button:focus-visible{outline:3px solid var(--hi);outline-offset:2px}
+button:disabled{opacity:.45;cursor:default}
+.rail{display:flex;flex-wrap:wrap;gap:6px}
+.rail button{padding:6px 10px;font-size:.82rem;display:flex;gap:6px;align-items:center}
+.rail button .n{font-family:var(--mono);color:var(--muted)}
+.rail button[aria-current="step"]{border-color:var(--accent);background:var(--accent-soft)}
+.rail button[aria-current="step"] .n{color:var(--accent)}
+.legend{display:flex;flex-wrap:wrap;gap:14px;font-size:.85rem;color:var(--muted)}
+.legend i{display:inline-block;width:18px;height:5px;border-radius:3px;margin-right:6px;vertical-align:3px}
+.legend b{display:inline-block;width:11px;height:11px;border-radius:50%;margin-right:6px;vertical-align:-1px}
+footer{font-size:.8rem;color:var(--muted);border-top:1px solid var(--line);padding-top:12px;display:grid;gap:4px}
+svg text{font-family:var(--body)}
+.lab-t{font-size:14px;font-weight:700;fill:var(--ink)}
+.lab-s{font-size:11.5px;fill:var(--ink-soft)}
+.nuc-t{font-size:13px;font-weight:700;fill:var(--node-ink)}
+.nerve .case{fill:none;stroke:var(--nerve-case);stroke-width:11;stroke-linecap:round}
+.nerve .ax{fill:none;stroke-width:4.5;stroke-linecap:round}
+.nerve{opacity:.3;transition:opacity .5s}
+.nerve.on{opacity:1}
+@media (prefers-reduced-motion: reduce){ .fill,.nerve{transition:none} }
+
+</style>
+
+<div class="wrap">
+  <header>
+    <h1>Osmorreceptores e ADH</h1>
+    <p>Outro sentido químico oculto: o encéfalo percebe a osmolaridade do sangue e o rim corrige com o ADH. O que muda em cada etapa fica destacado em dourado.</p>
+  </header>
+  <div class="main">
+    <div class="stage">
+      <svg id="svg" viewBox="0 0 1000 560" role="img" aria-label="Corte sagital do hipotálamo com o 3º ventrículo, órgão subfornical, órgão vascular da lâmina terminal, núcleos paraventricular e supraóptico, neuro-hipófise, vaso sanguíneo com ADH e túbulo renal com canais de água">
+        <defs>
+          <linearGradient id="gStage" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--stage-a)"/><stop offset="1" stop-color="var(--stage-b)"/></linearGradient>
+          <linearGradient id="gBrain" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--brain-a)"/><stop offset="1" stop-color="var(--brain-b)"/></linearGradient>
+          <linearGradient id="gBone" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--bone-a)"/><stop offset="1" stop-color="var(--bone-b)"/></linearGradient>
+          <radialGradient id="gCyto" cx=".4" cy=".3" r=".8"><stop offset="0" stop-color="var(--cyto-a)"/><stop offset="1" stop-color="var(--cyto-b)"/></radialGradient>
+          <radialGradient id="gNode" cx=".35" cy=".3" r=".8"><stop offset="0" stop-color="var(--node-a)"/><stop offset="1" stop-color="var(--node-b)"/></radialGradient>
+          <radialGradient id="gHalo"><stop offset="0" stop-color="var(--hi)" stop-opacity=".22"/><stop offset=".75" stop-color="var(--hi)" stop-opacity=".08"/><stop offset="1" stop-color="var(--hi)" stop-opacity="0"/></radialGradient>
+          <radialGradient id="gHeart" cx=".38" cy=".3" r=".8"><stop offset="0" stop-color="#E88A7E"/><stop offset=".55" stop-color="#C2463B"/><stop offset="1" stop-color="#7E2620"/></radialGradient>
+          <linearGradient id="gLumen" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#C9473D"/><stop offset=".45" stop-color="#F08B80"/><stop offset="1" stop-color="#C9473D"/></linearGradient>
+          <filter id="glow" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+          <filter id="soft" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#0B2A4E" flood-opacity=".14"/></filter>
+          <pattern id="pTissue" width="18" height="18" patternUnits="userSpaceOnUse"><circle cx="4" cy="4" r="1.2" fill="var(--tissue-line)"/><circle cx="13" cy="12" r="1" fill="var(--tissue-line)"/></pattern>
+          <linearGradient id="gVent" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#9CC8EC"/><stop offset="1" stop-color="#5E9FD6"/></linearGradient>
+<linearGradient id="gUrine" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFF6CF"/><stop offset="1" stop-color="#F3E3A2"/></linearGradient>
+        </defs>
+        <rect width="1000" height="560" fill="url(#gStage)"/>
+        
+<path d="M40,200 C40,80 160,22 300,22 C440,22 520,90 520,190 C520,270 470,320 400,330 L250,330 C140,330 40,290 40,200 Z" fill="url(#gBrain)" stroke="var(--brain-line)" stroke-width="2" filter="url(#soft)"/>
+<path d="M262,82 C300,90 312,130 306,170 C300,210 280,240 248,250 C230,256 214,248 216,232 C240,220 252,190 252,160 C252,120 246,96 262,82 Z" fill="url(#gVent)" stroke="#3B78B3" stroke-width="1.5" opacity=".9"/>
+<g id="sfo"><circle cx="268" cy="88" r="11" fill="#E0605A" stroke="#8A2F28" stroke-width="2"/></g>
+<g id="ovlt"><circle cx="210" cy="238" r="11" fill="#E0605A" stroke="#8A2F28" stroke-width="2"/></g>
+<path d="M320,300 C330,320 340,345 350,362" stroke="var(--brain-line)" stroke-width="14" stroke-linecap="round" fill="none"/>
+<ellipse cx="318" cy="392" rx="28" ry="22" fill="#F1B6A8" stroke="#B5675A" stroke-width="2"/>
+<ellipse id="np" cx="364" cy="388" rx="24" ry="22" fill="#D7C2EA" stroke="#7B4FB0" stroke-width="2"/>
+<path d="M372,398 C470,440 520,520 600,512 L990,512" fill="none" stroke="#B4483F" stroke-width="24" stroke-linecap="round"/>
+<path d="M372,398 C470,440 520,520 600,512 L990,512" fill="none" stroke="#E57B70" stroke-width="16" stroke-linecap="round"/>
+<g id="part" fill="#5B3A1A"><circle cx="470" cy="455" r="3.5"/><circle cx="520" cy="492" r="3.5"/><circle cx="640" cy="510" r="3.5"/><circle cx="760" cy="514" r="3.5"/></g>
+<g id="partX" fill="#5B3A1A" opacity="0"><circle cx="440" cy="438" r="3.5"/><circle cx="500" cy="470" r="3.5"/><circle cx="560" cy="510" r="3.5"/><circle cx="700" cy="508" r="3.5"/><circle cx="820" cy="512" r="3.5"/><circle cx="900" cy="516" r="3.5"/></g>
+<rect x="600" y="270" width="380" height="58" rx="6" fill="url(#gUrine)" stroke="#C9B15A"/>
+<g fill="url(#gCyto)" stroke="#B0517A" stroke-width="2"><rect x="602" y="330" width="92" height="104" rx="8"/><rect x="698" y="330" width="92" height="104" rx="8"/><rect x="794" y="330" width="92" height="104" rx="8"/><rect x="890" y="330" width="88" height="104" rx="8"/></g>
+<g fill="#E7C3D6" stroke="#B0517A" stroke-width="1.2"><ellipse cx="648" cy="390" rx="16" ry="12"/><ellipse cx="744" cy="390" rx="16" ry="12"/><ellipse cx="840" cy="390" rx="16" ry="12"/><ellipse cx="934" cy="390" rx="16" ry="12"/></g>
+<g id="aqp" opacity="0" fill="#2F80C8" stroke="#1D5A93" stroke-width="1"><rect x="628" y="322" width="10" height="16" rx="3"/><rect x="664" y="322" width="10" height="16" rx="3"/><rect x="724" y="322" width="10" height="16" rx="3"/><rect x="760" y="322" width="10" height="16" rx="3"/><rect x="820" y="322" width="10" height="16" rx="3"/><rect x="856" y="322" width="10" height="16" rx="3"/><rect x="914" y="322" width="10" height="16" rx="3"/><rect x="950" y="322" width="10" height="16" rx="3"/></g>
+<g id="h2o" fill="#5DA9E9" stroke="#fff" stroke-width="1"><circle cx="634" cy="298" r="5"/><circle cx="730" cy="300" r="5"/><circle cx="826" cy="296" r="5"/><circle cx="920" cy="300" r="5"/><circle cx="676" cy="306" r="5"/><circle cx="866" cy="306" r="5"/></g>
+
+        <g id="focus" opacity="0" pointer-events="none">
+          <ellipse id="fHalo" cx="150" cy="350" rx="110" ry="110" fill="url(#gHalo)"/>
+          <ellipse id="fRing" cx="150" cy="350" rx="90" ry="90" fill="none" stroke="var(--hi)" stroke-width="3" stroke-dasharray="9 7"/>
+        </g>
+        <g id="nerves"></g>
+        <g id="nuclei"></g>
+        <g id="fxTop"></g>
+        <g id="labels"></g>
+        <g id="pulses"></g>
+        <g id="note" opacity="0"><path id="noteBg" fill="var(--hi)"/><text id="noteTx" style="font-size:13.5px;font-weight:700;fill:#1B1B1B"></text></g>
+      </svg>
+    </div>
+    <aside class="panel" aria-live="polite">
+      <div class="eyebrow" id="eyebrow">Etapa 1</div>
+      <h2 id="ttl"></h2>
+      <p class="txt" id="txt"></p>
+      <div id="tags"></div>
+      <div class="meters" id="meters"></div>
+      <div class="controls">
+        <button id="prev" type="button">← Anterior</button>
+        <button id="replay" type="button">↻ Rever</button>
+        <button id="next" type="button" class="primary">Próxima →</button>
+        <button id="auto" type="button">▶ Tudo seguido</button>
+      </div>
+    </aside>
+  </div>
+  <nav class="rail" id="rail" aria-label="Etapas"></nav>
+  <div class="legend"><span><b style="background:#E0605A"></b>osmorreceptor</span><span><i style="background:var(--aff)"></i>sinal ao hipotálamo</span><span><i style="background:var(--pur)"></i>axônios e ADH</span><span><b style="background:#2F80C8"></b>canal de água</span><span><b style="background:#5DA9E9"></b>água</span><span><i style="background:var(--hi)"></i>etapa ativa</span></div>
+  <footer><div>Conteúdo: aula de Sentidos Químicos (Prof. Marcelo, slide dos osmorreceptores, baseado em Lent, <em>Cem Bilhões de Neurônios</em>). O sentido da mudança de disparo (↑ ou ↓) está em conferência no resumo e não é mostrado aqui. Osmolaridade e ADH são esquemáticos, sem escala. Siglas: PVN núcleo paraventricular; SON núcleo supraóptico.</div><div>Ilustração esquemática desenhada para este Estudo Guiado.</div></footer>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script>
+(function(){
+const NS='http://www.w3.org/2000/svg';
+const $=id=>document.getElementById(id);
+const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+function el(tag,attrs,parent){const e=document.createElementNS(NS,tag);for(const k in attrs)e.setAttribute(k,attrs[k]);if(parent)parent.appendChild(e);return e}
+
+const NERVES={
+  sfoPvn:{d:'M278,98 C300,120 316,142 322,154',c:'var(--aff)'},
+  ovltSon:{d:'M222,242 C244,254 264,262 280,266',c:'var(--aff)'},
+  pvnNp:{d:'M338,192 C344,250 354,320 360,364',c:'var(--pur)'},
+  sonNp:{d:'M312,286 C328,320 344,346 352,366',c:'var(--pur)'},
+  adh:{d:'M386,404 C470,440 520,518 600,512 L960,512',c:'#7B4FB0'}
+};
+const NUC={PVN:[332,172,22,'PVN','var(--pur)'],SON:[300,268,22,'SON','var(--pur)']};
+const LABELS=[
+ [60,40,'Órgão subfornical (SFO)',null,258,84],
+ [52,282,'Órgão vascular da lâmina terminal','OVLT',204,250],
+ [380,120,'Núcleo paraventricular',null,354,166],
+ [380,232,'Núcleo supraóptico',null,322,262],
+ [150,420,'Neuro-hipófise',null,344,396],
+ [610,226,'Luz do túbulo coletor','urina',640,270],
+ [610,452,'Sangue',null,620,500],
+ [780,452,'Célula do túbulo',null,840,434],
+ [400,520,'ADH no sangue',null]
+];
+const METERS=[{label:'Osmolaridade',sub:'esquemática',grad:'linear-gradient(to top,#F3D9A2,#C47F12)'},{label:'ADH',sub:'esquemático',grad:'linear-gradient(to top,#D7C2EA,var(--pur))'}];
+const STEPS=[
+ {t:'Osmolaridade normal',r:'Normal',x:'Com a osmolaridade do sangue normal, os osmorreceptores em torno do 3º ventrículo mantêm a liberação de ADH em nível basal.',tags:[['Aula 00:59:49',0]],on:[],f:[250,170,90,110],hot:[],note:null,m:[50,15],ml:['normal','basal'],osm:0,shr:0,aqp:0,w:0},
+ {t:'Osmolaridade do sangue sobe',r:'Sobe',x:'Depois de muito tempo sem beber água, o sangue fica mais concentrado: a osmolaridade sobe.',tags:[['Aula 01:00:18',0]],on:[],f:[560,480,200,60],hot:[],note:[440,404,'muito tempo sem beber água'],m:[85,15],ml:['alta','basal'],osm:1,shr:0,aqp:0,w:0},
+ {t:'Osmorreceptor perde água e "murcha"',r:'Murcha',x:'No órgão subfornical e no órgão vascular da lâmina terminal, o osmorreceptor perde água para o sangue mais concentrado e murcha: a tensão da sua membrana muda.',tags:[['Slide dos osmorreceptores (01:01:40)',0]],on:[],f:[240,165,70,105],hot:[],note:null,m:[85,15],ml:['alta','basal'],osm:1,shr:1,aqp:0,w:0},
+ {t:'Canais iônicos mudam a frequência de disparo',r:'Disparo muda',x:'Os canais iônicos sensíveis à tensão da membrana mudam a frequência de disparo do osmorreceptor, e o sinal chega ao núcleo paraventricular (PVN) e ao supraóptico (SON).',tags:[['Aula 00:59:58',0],['Sentido do disparo: ver caixa de aviso do resumo',0]],on:['sfoPvn','ovltSon'],sp:1.5,f:[290,180,90,110],hot:['PVN','SON'],note:null,m:[85,15],ml:['alta','basal'],osm:1,shr:1,aqp:0,w:0},
+ {t:'PVN e supraóptico liberam ADH',r:'ADH',x:'Os núcleos paraventricular e supraóptico enviam seus axônios à neuro-hipófise, que libera o hormônio antidiurético (ADH) no sangue.',tags:[['Aula 01:00:06',0]],on:['pvnNp','sonNp','adh'],sp:1.5,f:[340,300,70,110],hot:['PVN','SON'],note:null,m:[85,80],ml:['alta','alto'],osm:1,shr:1,aqp:0,w:0},
+ {t:'Canais de água no túbulo renal',r:'Canais de água',x:'O ADH chega ao rim e faz a célula do túbulo inserir canais de água na membrana voltada para a urina.',tags:[['Aula 01:00:31',0]],on:['adh'],sp:1.5,f:[790,330,190,40],hot:[],note:null,m:[85,80],ml:['alta','alto'],osm:1,shr:1,aqp:1,w:0},
+ {t:'Água reabsorvida',r:'Reabsorção',x:'A água passa da urina, pelos canais, para o sangue: o rim reabsorve água e a urina fica mais concentrada.',tags:[['Aula 01:00:35',0]],on:['adh'],sp:1.5,f:[790,400,190,120],hot:[],note:null,m:[65,80],ml:['caindo','alto'],osm:1,shr:1,aqp:1,w:1},
+ {t:'Osmolaridade normal de novo',r:'Normal de novo',x:'Com a água reabsorvida, a osmolaridade volta ao normal, o osmorreceptor recupera o volume e a liberação de ADH diminui. Tudo sem participação da consciência.',tags:[['Aula 01:00:38',0]],on:[],f:[250,170,90,110],hot:[],note:null,m:[50,30],ml:['normal','caindo'],osm:0,shr:0,aqp:1,w:1}
+];
+function FX(s,d){
+  gsap.to('#partX',{opacity:s.osm?1:0,duration:d});
+  gsap.to(['#sfo','#ovlt'],{scale:s.shr?.68:1,transformOrigin:'50% 50%',duration:d,ease:'elastic.out(1,.6)'});
+  gsap.set(['#sfo','#ovlt'],{filter:s.shr?'url(#glow)':'none'});
+  gsap.to('#aqp',{opacity:s.aqp?1:0,duration:d});gsap.set('#aqp',{filter:s.aqp?'url(#glow)':'none'});
+  gsap.to('#h2o circle',{y:s.w?200:0,opacity:s.w?.9:1,duration:d?1.4:0,stagger:d?.08:0,ease:'power1.inOut'});
+}
+
+const gN=$('nerves');
+for(const k in NERVES){const n=NERVES[k];const g=el('g',{class:'nerve',id:'n_'+k},gN);
+  el('path',{class:'case',d:n.d},g);const ax=el('path',{class:'ax',d:n.d,stroke:n.c},g);n.ax=ax;n.g=g;
+  if(n.inib){const L=ax.getTotalLength(),p=ax.getPointAtLength(L),q=ax.getPointAtLength(L-6);const a=Math.atan2(p.y-q.y,p.x-q.x)+Math.PI/2;
+    el('line',{x1:p.x+11*Math.cos(a),y1:p.y+11*Math.sin(a),x2:p.x-11*Math.cos(a),y2:p.y-11*Math.sin(a),stroke:n.c,'stroke-width':5,'stroke-linecap':'round'},g);}}
+const gK=$('nuclei');
+for(const k in NUC){const [x,y,r,t,c]=NUC[k];const g=el('g',{id:'k_'+k},gK);
+  el('circle',{cx:x,cy:y,r:r+5,fill:c,opacity:.16},g);el('circle',{cx:x,cy:y,r,fill:'url(#gNode)',stroke:c,'stroke-width':2.5},g);
+  const parts=t.split(' ');if(parts.length>1){el('text',{x,y:y-2,'text-anchor':'middle',class:'nuc-t'},g).textContent=parts[0];el('text',{x,y:y+13,'text-anchor':'middle',class:'nuc-t'},g).textContent=parts[1];}
+  else el('text',{x,y:y+4.5,'text-anchor':'middle',class:'nuc-t'},g).textContent=t;}
+const gL=$('labels');
+function label(x,y,t,s,lx,ly){const g=el('g',{},gL);
+  if(lx!=null)el('path',{d:`M${x},${y} L${lx},${ly}`,stroke:'var(--label-line)','stroke-width':1.5,fill:'none'},g);
+  const bg=el('rect',{rx:8,fill:'var(--label-bg)',stroke:'var(--label-line)','stroke-width':1},g);
+  const t1=el('text',{x:x+10,y:y+(s?17:19),class:'lab-t'},g);t1.textContent=t;
+  let w=t1.getComputedTextLength();
+  if(s){const t2=el('text',{x:x+10,y:y+32,class:'lab-s'},g);t2.textContent=s;w=Math.max(w,t2.getComputedTextLength());}
+  bg.setAttribute('x',x);bg.setAttribute('y',y);bg.setAttribute('width',w+20);bg.setAttribute('height',s?40:28);}
+LABELS.forEach(a=>label(...a));
+const gP=$('pulses');const pulses=[];
+function setPulses(on,speed){pulses.forEach(p=>p.el.remove());pulses.length=0;if(reduce)return;
+  on.forEach(k=>{const n=NERVES[k];if(!n)return;const L=n.ax.getTotalLength();const cnt=Math.max(2,Math.round(L/110));
+    for(let i=0;i<cnt;i++){const c=el('circle',{r:5.2,fill:'#FFFFFF',stroke:n.c,'stroke-width':3,filter:'url(#glow)'},gP);pulses.push({el:c,ax:n.ax,L,off:i/cnt,v:speed*140/L});}});}
+gsap.ticker.add((t)=>{for(const p of pulses){const f=(t*p.v+p.off)%1;const pt=p.ax.getPointAtLength(f*p.L);p.el.setAttribute('cx',pt.x);p.el.setAttribute('cy',pt.y);p.el.setAttribute('opacity',f<.08?f/.08:f>.92?(1-f)/.08:1);}});
+const gM=$('meters');
+METERS.forEach((m,i)=>{const d=document.createElement('div');d.className='meter';d.setAttribute('aria-label',m.label+' ('+m.sub+')');
+  d.innerHTML=`<div class="bar"><div class="fill" id="fill${i}" style="background:${m.grad}"></div></div><div><strong>${m.label}</strong><small id="ml${i}"></small><small>${m.sub}</small></div>`;gM.appendChild(d);});
+let cur=0,auto=false;
+const rail=$('rail');
+STEPS.forEach((s,i)=>{const b=document.createElement('button');b.type='button';b.innerHTML=`<span class="n">${i+1}</span>${s.r||s.t}`;b.addEventListener('click',()=>{stopAuto();go(i)});rail.appendChild(b)});
+function setNote(n,instant){const g=$('note');gsap.killTweensOf(g);if(!n){gsap.to(g,{opacity:0,duration:instant?0:.2});return}
+  const tx=$('noteTx');tx.textContent=n[2];tx.setAttribute('x',n[0]+12);tx.setAttribute('y',n[1]+20);
+  const w=tx.getComputedTextLength()+24,x=n[0],y=n[1],h=30;
+  $('noteBg').setAttribute('d',`M${x+8},${y} h${w-16} a8,8 0 0 1 8,8 v${h-16} a8,8 0 0 1 -8,8 h${-(w-16)/2+7} l-7,8 l-7,-8 h${-(w-16)/2+7} a8,8 0 0 1 -8,-8 v${-(h-16)} a8,8 0 0 1 8,-8 z`);
+  if(instant||reduce){gsap.set(g,{opacity:1,y:0});return}gsap.fromTo(g,{opacity:0,y:6},{opacity:1,y:0,duration:.4,delay:.35});}
+function render(){const s=STEPS[cur];
+  $('eyebrow').textContent=`Etapa ${cur+1} de ${STEPS.length}`;$('ttl').textContent=s.t;$('txt').textContent=s.x;
+  $('tags').innerHTML=s.tags.map(t=>`<span class="tag${t[1]?' ext':''}">${t[1]?'Complemento externo · ':''}${t[0]}</span>`).join('');
+  METERS.forEach((m,i)=>{$('fill'+i).style.height=(s.m?s.m[i]:50)+'%';$('ml'+i).textContent=s.ml?s.ml[i]:'';});
+  [...rail.children].forEach((b,i)=>{if(i===cur)b.setAttribute('aria-current','step');else b.removeAttribute('aria-current')});
+  $('prev').disabled=cur===0;$('next').disabled=cur===STEPS.length-1;}
+function apply(s,instant){const d=instant||reduce?0:.9;
+  for(const k in NERVES)NERVES[k].g.classList.toggle('on',s.on.includes(k));
+  gsap.to('#focus',{opacity:1,duration:d});
+  gsap.to('#fHalo',{attr:{cx:s.f[0],cy:s.f[1],rx:s.f[2]+22,ry:s.f[3]+22},duration:d,ease:'power2.inOut'});
+  gsap.to('#fRing',{attr:{cx:s.f[0],cy:s.f[1],rx:s.f[2],ry:s.f[3]},duration:d,ease:'power2.inOut'});
+  for(const k in NUC){const on=s.hot.includes(k);gsap.set('#k_'+k,{filter:on?'url(#glow)':'none'});gsap.to('#k_'+k,{scale:on?1.1:1,svgOrigin:`${NUC[k][0]} ${NUC[k][1]}`,duration:d*.6});}
+  setPulses(s.on,s.sp||1);setNote(s.note,instant);FX(s,d,instant);}
+function go(i){cur=Math.max(0,Math.min(STEPS.length-1,i));render();
+  if(!reduce&&cur>0)apply(STEPS[cur-1],true);
+  requestAnimationFrame(()=>apply(STEPS[cur],false));
+  if(auto){clearTimeout(go.t);go.t=setTimeout(()=>{if(!auto)return;if(cur<STEPS.length-1)go(cur+1);else stopAuto()},4800)}}
+function stopAuto(){auto=false;clearTimeout(go.t);$('auto').textContent='▶ Tudo seguido'}
+$('next').addEventListener('click',()=>{stopAuto();go(cur+1)});
+$('prev').addEventListener('click',()=>{stopAuto();go(cur-1)});
+$('replay').addEventListener('click',()=>go(cur));
+$('auto').addEventListener('click',()=>{auto=!auto;$('auto').textContent=auto?'❚❚ Pausar':'▶ Tudo seguido';if(auto)go(cur===STEPS.length-1?0:cur);else stopAuto()});
+document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'){stopAuto();go(cur+1)}if(e.key==='ArrowLeft'){stopAuto();go(cur-1)}});
+render();apply(STEPS[0],true);
+})();
+</script>
+
+</body></html>

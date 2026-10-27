@@ -1,0 +1,272 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{box-sizing:border-box}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style></head><body>
+<title>Sabor Salgado Passo a Passo</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+/* Layout: palco de ilustração médica largo + painel da etapa com medidores; trilho de etapas embaixo (mesmo padrão do barorreflexo aprovado). */
+:root{
+  --bg:#EEF2F6; --surface:#FFFFFF; --fg:#16212E; --muted:#56657A; --line:#D3DCE6;
+  --accent:#0B2A4E; --accent-soft:#E2EBF6; --hi:#D9A21B; --hi-soft:#FBF1D6;
+  --sym:#C0392B; --para:#2F80C8; --aff:#0E7C7B; --pur:#7B4FB0; --grn:#3E9A4F;
+  --stage-a:#FDFEFF; --stage-b:#E9EFF5; --tissue:#F6E7E2; --tissue-line:#E6CFC7;
+  --brain-a:#F4EEF8; --brain-b:#E2D5EC; --brain-line:#A893BC;
+  --bone-a:#F3EBD8; --bone-b:#D9C9A6; --mucus:#DDEFF3; --cyto-a:#FFF4F2; --cyto-b:#F7D9D3;
+  --node-a:#FFFFFF; --node-b:#EDE6F3; --node-ink:#1E2B3A;
+  --nerve-case:#F7EFD9; --label-bg:rgba(255,255,255,.92); --label-line:#CBD5E1; --ink:#1E2B3A; --ink-soft:#5B6B7E;
+  --display:"Bricolage Grotesque", "Trebuchet MS", system-ui, sans-serif;
+  --body:"Atkinson Hyperlegible", "Segoe UI", system-ui, sans-serif;
+  --mono:"JetBrains Mono", ui-monospace, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#0E141B; --surface:#17202A; --fg:#E5ECF3; --muted:#9AABBE; --line:#2A3746;
+  --accent:#8DB6E8; --accent-soft:#1D2B3C; --hi:#F0C04A; --hi-soft:#3A2F12;
+  --stage-a:#1A2430; --stage-b:#111921; --tissue:#2C2224; --tissue-line:#4A3538;
+  --brain-a:#2A2333; --brain-b:#211B29; --brain-line:#7D6A92;
+  --bone-a:#3A3428; --bone-b:#2A251C; --mucus:#1E3138; --cyto-a:#3A2A2C; --cyto-b:#2C1F21;
+  --node-a:#2F3B4A; --node-b:#1E2733; --node-ink:#F2F6FA;
+  --nerve-case:#3A3527; --label-bg:rgba(23,32,42,.92); --label-line:#3A4A5C; --ink:#E3EAF2; --ink-soft:#A3B3C4; color-scheme:dark } }
+:root[data-theme="dark"]{
+  --bg:#0E141B; --surface:#17202A; --fg:#E5ECF3; --muted:#9AABBE; --line:#2A3746;
+  --accent:#8DB6E8; --accent-soft:#1D2B3C; --hi:#F0C04A; --hi-soft:#3A2F12;
+  --stage-a:#1A2430; --stage-b:#111921; --tissue:#2C2224; --tissue-line:#4A3538;
+  --brain-a:#2A2333; --brain-b:#211B29; --brain-line:#7D6A92;
+  --bone-a:#3A3428; --bone-b:#2A251C; --mucus:#1E3138; --cyto-a:#3A2A2C; --cyto-b:#2C1F21;
+  --node-a:#2F3B4A; --node-b:#1E2733; --node-ink:#F2F6FA;
+  --nerve-case:#3A3527; --label-bg:rgba(23,32,42,.92); --label-line:#3A4A5C; --ink:#E3EAF2; --ink-soft:#A3B3C4; color-scheme:dark }
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:16px;line-height:1.5}
+.wrap{max-width:1180px;margin:0 auto;padding-block:20px 40px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:grid;gap:16px}
+header h1{font-family:var(--display);font-weight:800;font-size:clamp(1.5rem,3.2vw,2.2rem);line-height:1.1;margin:0;text-wrap:balance}
+header p{margin:.35rem 0 0;color:var(--muted);max-width:68ch}
+.main{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:16px;align-items:start}
+@media (max-width:860px){.main{grid-template-columns:minmax(0,1fr)}}
+.stage{border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:0 8px 28px rgba(11,42,78,.08);background:var(--stage-a)}
+.stage svg{display:block;width:100%;height:auto}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:16px;display:grid;gap:12px;min-width:0;box-shadow:0 8px 28px rgba(11,42,78,.06)}
+.eyebrow{font-family:var(--mono);font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:var(--para)}
+.panel h2{font-family:var(--display);font-weight:600;font-size:1.25rem;line-height:1.2;margin:0;text-wrap:balance}
+.panel .txt{margin:0}
+.tag{display:inline-block;font-size:.75rem;padding:2px 8px;border-radius:99px;border:1px solid var(--line);color:var(--muted);margin:0 4px 4px 0}
+.tag.ext{border-color:var(--hi);color:var(--fg);background:var(--hi-soft)}
+.meters{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.meters:empty{display:none}
+.meter{display:grid;grid-template-columns:26px 1fr;gap:8px;align-items:stretch}
+.bar{position:relative;height:124px;border-radius:9px;border:1px solid var(--line);background:repeating-linear-gradient(to top,var(--bg) 0 23px,var(--line) 23px 24px);overflow:hidden}
+.fill{position:absolute;left:3px;right:3px;bottom:3px;height:50%;border-radius:6px;transition:height .6s cubic-bezier(.3,.7,.3,1)}
+.meter strong{font-size:.9rem}
+.meter small{color:var(--muted);font-size:.78rem;display:block}
+.controls{display:flex;flex-wrap:wrap;gap:8px}
+button{font-family:var(--body);font-size:.95rem;border-radius:10px;border:1px solid var(--line);background:var(--surface);color:var(--fg);padding:8px 14px;cursor:pointer}
+button.primary{background:var(--accent);border-color:var(--accent);color:var(--surface);font-weight:700}
+button:focus-visible{outline:3px solid var(--hi);outline-offset:2px}
+button:disabled{opacity:.45;cursor:default}
+.rail{display:flex;flex-wrap:wrap;gap:6px}
+.rail button{padding:6px 10px;font-size:.82rem;display:flex;gap:6px;align-items:center}
+.rail button .n{font-family:var(--mono);color:var(--muted)}
+.rail button[aria-current="step"]{border-color:var(--accent);background:var(--accent-soft)}
+.rail button[aria-current="step"] .n{color:var(--accent)}
+.legend{display:flex;flex-wrap:wrap;gap:14px;font-size:.85rem;color:var(--muted)}
+.legend i{display:inline-block;width:18px;height:5px;border-radius:3px;margin-right:6px;vertical-align:3px}
+.legend b{display:inline-block;width:11px;height:11px;border-radius:50%;margin-right:6px;vertical-align:-1px}
+footer{font-size:.8rem;color:var(--muted);border-top:1px solid var(--line);padding-top:12px;display:grid;gap:4px}
+svg text{font-family:var(--body)}
+.lab-t{font-size:14px;font-weight:700;fill:var(--ink)}
+.lab-s{font-size:11.5px;fill:var(--ink-soft)}
+.nuc-t{font-size:13px;font-weight:700;fill:var(--node-ink)}
+.nerve .case{fill:none;stroke:var(--nerve-case);stroke-width:11;stroke-linecap:round}
+.nerve .ax{fill:none;stroke-width:4.5;stroke-linecap:round}
+.nerve{opacity:.3;transition:opacity .5s}
+.nerve.on{opacity:1}
+@media (prefers-reduced-motion: reduce){ .fill,.nerve{transition:none} }
+
+</style>
+
+<div class="wrap">
+  <header>
+    <h1>Transdução do sabor salgado</h1>
+    <p>Do NaCl na saliva ao potencial de ação na fibra aferente. O que muda em cada etapa fica destacado em dourado.</p>
+  </header>
+  <div class="main">
+    <div class="stage">
+      <svg id="svg" viewBox="0 0 1000 560" role="img" aria-label="Botão gustatório em corte: poro gustatório com saliva e NaCl, célula gustativa com microvilosidades, canal de Na⁺ apical, canal de Ca²⁺ basolateral, vesículas e sinapse com a fibra aferente">
+        <defs>
+          <linearGradient id="gStage" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--stage-a)"/><stop offset="1" stop-color="var(--stage-b)"/></linearGradient>
+          <linearGradient id="gBrain" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--brain-a)"/><stop offset="1" stop-color="var(--brain-b)"/></linearGradient>
+          <linearGradient id="gBone" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--bone-a)"/><stop offset="1" stop-color="var(--bone-b)"/></linearGradient>
+          <radialGradient id="gCyto" cx=".4" cy=".3" r=".8"><stop offset="0" stop-color="var(--cyto-a)"/><stop offset="1" stop-color="var(--cyto-b)"/></radialGradient>
+          <radialGradient id="gNode" cx=".35" cy=".3" r=".8"><stop offset="0" stop-color="var(--node-a)"/><stop offset="1" stop-color="var(--node-b)"/></radialGradient>
+          <radialGradient id="gHalo"><stop offset="0" stop-color="var(--hi)" stop-opacity=".22"/><stop offset=".75" stop-color="var(--hi)" stop-opacity=".08"/><stop offset="1" stop-color="var(--hi)" stop-opacity="0"/></radialGradient>
+          <radialGradient id="gHeart" cx=".38" cy=".3" r=".8"><stop offset="0" stop-color="#E88A7E"/><stop offset=".55" stop-color="#C2463B"/><stop offset="1" stop-color="#7E2620"/></radialGradient>
+          <linearGradient id="gLumen" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#C9473D"/><stop offset=".45" stop-color="#F08B80"/><stop offset="1" stop-color="#C9473D"/></linearGradient>
+          <filter id="glow" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+          <filter id="soft" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#0B2A4E" flood-opacity=".14"/></filter>
+          <pattern id="pTissue" width="18" height="18" patternUnits="userSpaceOnUse"><circle cx="4" cy="4" r="1.2" fill="var(--tissue-line)"/><circle cx="13" cy="12" r="1" fill="var(--tissue-line)"/></pattern>
+          <linearGradient id="gSaliva" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--stage-a)"/><stop offset="1" stop-color="var(--mucus)"/></linearGradient>
+        </defs>
+        <rect width="1000" height="560" fill="url(#gStage)"/>
+        
+<rect x="0" y="0" width="1000" height="112" fill="url(#gSaliva)"/>
+<path d="M0,112 L440,112 C450,112 452,140 455,150 L455,160 L0,160 Z" fill="var(--tissue)"/>
+<path d="M1000,112 L500,112 C490,112 488,140 485,150 L485,160 L1000,160 Z" fill="var(--tissue)"/>
+<path d="M0,112 L440,112 C450,112 452,140 455,150 L455,160 L0,160 Z M1000,112 L500,112 C490,112 488,140 485,150 L485,160 L1000,160 Z" fill="url(#pTissue)" opacity=".8"/>
+<rect x="0" y="160" width="1000" height="400" fill="var(--tissue)" opacity=".55"/>
+<g fill="var(--cyto-b)" stroke="var(--tissue-line)" stroke-width="2" opacity=".9">
+  <path d="M430,165 C400,200 300,230 300,330 C300,430 340,470 380,478 L372,320 C372,240 420,200 440,170 Z"/>
+  <path d="M510,165 C540,200 640,230 640,330 C640,430 600,470 560,478 L592,320 C592,240 520,200 500,170 Z"/>
+</g>
+<g id="cellMem">
+  <path id="cellBody" d="M455,150 L485,150 C490,190 590,210 590,320 C590,420 540,465 470,465 C400,465 370,420 370,320 C370,210 450,190 455,150 Z" fill="url(#gCyto)" stroke="#B0517A" stroke-width="3" filter="url(#soft)"/>
+</g>
+<ellipse cx="480" cy="322" rx="40" ry="30" fill="#E7C3D6" stroke="#B0517A" stroke-width="1.6"/>
+<ellipse cx="472" cy="314" rx="12" ry="9" fill="#fff" opacity=".35"/>
+<g stroke="#B0517A" stroke-width="2.4" stroke-linecap="round"><path d="M461,150 L459,124"/><path d="M468,150 L468,120"/><path d="M475,150 L476,121"/><path d="M482,150 L484,125"/></g>
+<g id="chNa"><rect x="453" y="138" width="14" height="28" rx="5" fill="#2F80C8" stroke="#1D5A93"/><rect x="474" y="138" width="14" height="28" rx="5" fill="#2F80C8" stroke="#1D5A93"/></g>
+<g id="chCa" transform="translate(586 392) rotate(-62)"><rect x="-17" y="-14" width="14" height="28" rx="5" fill="#7B4FB0" stroke="#4E2E78"/><rect x="3" y="-14" width="14" height="28" rx="5" fill="#7B4FB0" stroke="#4E2E78"/></g>
+<g id="ves"><circle cx="446" cy="436" r="10" fill="#BFE3C6" stroke="#3E9A4F" stroke-width="1.8"/><circle cx="474" cy="444" r="10" fill="#BFE3C6" stroke="#3E9A4F" stroke-width="1.8"/><circle cx="502" cy="438" r="10" fill="#BFE3C6" stroke="#3E9A4F" stroke-width="1.8"/></g>
+<ellipse cx="415" cy="498" rx="26" ry="14" fill="var(--cyto-b)" stroke="var(--tissue-line)" stroke-width="2"/>
+<circle id="bouton" cx="516" cy="482" r="13" fill="#F3D27A" stroke="#B88A14" stroke-width="2"/>
+<g id="naOut" fill="#2F80C8" stroke="#fff" stroke-width="1.2"><circle cx="380" cy="40" r="7"/><circle cx="560" cy="58" r="7"/><circle cx="320" cy="78" r="7"/><circle cx="610" cy="32" r="7"/><circle cx="430" cy="70" r="7"/></g>
+<g id="clOut" fill="#3E9A4F" stroke="#fff" stroke-width="1.2"><circle cx="350" cy="56" r="5.5"/><circle cx="585" cy="80" r="5.5"/><circle cx="300" cy="40" r="5.5"/><circle cx="640" cy="54" r="5.5"/><circle cx="455" cy="44" r="5.5"/></g>
+<g id="naIn" fill="#2F80C8" stroke="#fff" stroke-width="1.2" opacity="0"><circle cx="462" cy="196" r="7"/><circle cx="486" cy="214" r="7"/><circle cx="452" cy="232" r="7"/><circle cx="500" cy="248" r="7"/><circle cx="470" cy="262" r="7"/></g>
+<g id="caOut" fill="#7B4FB0" stroke="#fff" stroke-width="1.2"><circle cx="636" cy="376" r="7"/><circle cx="650" cy="402" r="7"/><circle cx="628" cy="420" r="7"/></g>
+<g id="caIn" fill="#7B4FB0" stroke="#fff" stroke-width="1.2" opacity="0"><circle cx="548" cy="402" r="7"/><circle cx="530" cy="420" r="7"/><circle cx="556" cy="426" r="7"/></g>
+<g id="nt" fill="#3E9A4F" opacity="0"><circle cx="500" cy="470" r="4"/><circle cx="510" cy="466" r="4"/><circle cx="520" cy="468" r="4"/><circle cx="505" cy="476" r="4"/><circle cx="526" cy="474" r="4"/></g>
+
+        <g id="focus" opacity="0" pointer-events="none">
+          <ellipse id="fHalo" cx="150" cy="350" rx="110" ry="110" fill="url(#gHalo)"/>
+          <ellipse id="fRing" cx="150" cy="350" rx="90" ry="90" fill="none" stroke="var(--hi)" stroke-width="3" stroke-dasharray="9 7"/>
+        </g>
+        <g id="nerves"></g>
+        <g id="nuclei"></g>
+        <g id="fxTop"></g>
+        <g id="labels"></g>
+        <g id="pulses"></g>
+        <g id="note" opacity="0"><path id="noteBg" fill="var(--hi)"/><text id="noteTx" style="font-size:13.5px;font-weight:700;fill:#1B1B1B"></text></g>
+      </svg>
+    </div>
+    <aside class="panel" aria-live="polite">
+      <div class="eyebrow" id="eyebrow">Etapa 1</div>
+      <h2 id="ttl"></h2>
+      <p class="txt" id="txt"></p>
+      <div id="tags"></div>
+      <div class="meters" id="meters"></div>
+      <div class="controls">
+        <button id="prev" type="button">← Anterior</button>
+        <button id="replay" type="button">↻ Rever</button>
+        <button id="next" type="button" class="primary">Próxima →</button>
+        <button id="auto" type="button">▶ Tudo seguido</button>
+      </div>
+    </aside>
+  </div>
+  <nav class="rail" id="rail" aria-label="Etapas"></nav>
+  <div class="legend"><span><b style="background:#2F80C8"></b>Na⁺</span><span><b style="background:#3E9A4F"></b>Cl⁻ / transmissor</span><span><b style="background:#7B4FB0"></b>Ca²⁺</span><span><i style="background:#C99A12"></i>fibra aferente</span><span><i style="background:var(--hi)"></i>etapa ativa</span></div>
+  <footer><div>Conteúdo: aula de Sentidos Químicos (Prof. Marcelo, slide "Receptores Gustatórios — TRPs", painel A); Purves et al., <em>Neurociências</em>, 4ª ed., cap. 15, Fig. 15.17 e 15.18A. O potencial e a liberação são esquemáticos, sem escala.</div><div>Ilustração esquemática desenhada para este Estudo Guiado.</div></footer>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script>
+(function(){
+const NS='http://www.w3.org/2000/svg';
+const $=id=>document.getElementById(id);
+const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+function el(tag,attrs,parent){const e=document.createElementNS(NS,tag);for(const k in attrs)e.setAttribute(k,attrs[k]);if(parent)parent.appendChild(e);return e}
+
+const NERVES={aff:{d:'M528,488 C560,512 640,524 760,522 C860,520 930,506 986,486',c:'#C99A12'}};
+const NUC={};
+const LABELS=[
+ [20,20,'Saliva com NaCl',null],
+ [520,96,'Poro gustatório',null,492,126],
+ [600,140,'Canal de Na⁺ sensível à amilorida','apical',490,152],
+ [660,300,'Canal de Ca²⁺','voltagem-dependente',600,382],
+ [120,250,'Célula gustativa','célula epitelial (não é neurônio)',372,300],
+ [120,330,'Célula de suporte',null,318,340],
+ [215,508,'Célula basal','renova a cada 2 semanas',392,500],
+ [700,470,'Fibra aferente','VII, IX ou X → NTS',760,520],
+ [150,452,'Vesículas com neurotransmissor',null,436,438]
+];
+const METERS=[{label:'Potencial',sub:'esquemático',grad:'linear-gradient(to top,#A9CDF0,var(--para))'},{label:'Transmissor',sub:'liberação',grad:'linear-gradient(to top,#BFE3C6,var(--grn))'}];
+const STEPS=[
+ {t:'Repouso da célula gustativa',r:'Repouso',x:'A célula gustativa é epitelial: no ápice tem microvilosidades voltadas para o poro gustatório; na base, faz sinapse química com a fibra aferente. Em repouso, a membrana está polarizada.',tags:[['Aula 00:35:03',0]],on:[],f:[480,305,150,175],hot:[],note:null,m:[20,4],ml:['repouso','nenhuma'],na:'out',ca:'out',nt:0,dep:0},
+ {t:'NaCl dissolvido no poro gustatório',r:'NaCl no poro',x:'O sal se dissolve na saliva e chega ao poro gustatório, onde as microvilosidades concentram as moléculas receptoras.',tags:[['Aula 00:43:46',0]],on:[],f:[470,96,120,50],hot:[],note:null,m:[20,4],ml:['repouso','nenhuma'],na:'pore',ca:'out',nt:0,dep:0},
+ {t:'Na⁺ entra pelo canal sensível à amilorida',r:'Na⁺ entra',x:'O Na⁺ entra na célula pelo canal de sódio sensível à amilorida, a favor do gradiente de concentração.',tags:[['Aula 00:44:25',0],['Purves, Fig. 15.18A',0]],on:[],f:[470,170,70,50],hot:[],note:[300,176,'Na⁺ atravessa o canal'],m:[40,4],ml:['subindo','nenhuma'],na:'in',ca:'out',nt:0,dep:0,chNa:1},
+ {t:'Despolarização da célula',r:'Despolarização',x:'A entrada de cargas positivas despolariza a célula gustativa: o potencial de membrana fica menos negativo.',tags:[['Aula 00:44:33',0]],on:[],f:[480,305,140,165],hot:[],note:[620,230,'membrana despolarizada'],m:[72,4],ml:['despolarizada','nenhuma'],na:'in',ca:'out',nt:0,dep:1},
+ {t:'Abrem canais de Ca²⁺ voltagem-dependentes',r:'Ca²⁺ entra',x:'A despolarização abre canais de Ca²⁺ voltagem-dependentes na membrana basolateral, e o Ca²⁺ entra na célula.',tags:[['Aula 00:44:39',0],['Purves, Fig. 15.17B',0]],on:[],f:[585,400,70,55],hot:[],note:null,m:[72,10],ml:['despolarizada','começando'],na:'in',ca:'in',nt:0,dep:1,chCa:1},
+ {t:'Ca²⁺ libera neurotransmissor',r:'Liberação',x:'O Ca²⁺ faz as vesículas se fundirem com a membrana basal e liberarem o neurotransmissor na sinapse com a fibra aferente (provavelmente serotonina e ATP).',tags:[['Purves, cap. 15, p. 387',0]],on:[],f:[505,460,70,40],hot:[],note:[560,430,'vesículas liberam o transmissor'],m:[72,80],ml:['despolarizada','alta'],na:'in',ca:'in',nt:1,dep:1},
+ {t:'PA na fibra aferente',r:'PA na fibra',x:'A fibra aferente do nervo facial, glossofaríngeo ou vago dispara potenciais de ação, que seguem até o núcleo do trato solitário no tronco encefálico.',tags:[['Aula 00:38:42',0]],on:['aff'],sp:1.6,f:[760,510,190,40],hot:[],note:null,m:[60,80],ml:['despolarizada','alta'],na:'in',ca:'in',nt:1,dep:1}
+];
+function FX(s,d){
+  const pore={x:[90,-90,150,-140,40],y:[60,60,60,80,40]};
+  gsap.to('#naOut circle',{x:i=>s.na==='out'?0:s.na==='pore'?pore.x[i]:pore.x[i],y:i=>s.na==='out'?0:pore.y[i],opacity:s.na==='in'?0:1,duration:d,stagger:d?.05:0});
+  gsap.to('#naIn',{opacity:s.na==='in'?1:0,duration:d,delay:s.na==='in'&&d?.3:0});
+  gsap.fromTo('#naIn circle',{y:s.na==='in'&&d?-50:0},{y:0,duration:d});
+  gsap.to('#caOut',{opacity:s.ca==='in'?.25:1,duration:d});
+  gsap.to('#caIn',{opacity:s.ca==='in'?1:0,duration:d});
+  gsap.to('#nt',{opacity:s.nt?1:0,duration:d});gsap.to('#ves',{y:s.nt?14:0,opacity:s.nt?.55:1,duration:d});
+  gsap.to('#cellBody',{attr:{stroke:s.dep?'#D9A21B':'#B0517A','stroke-width':s.dep?4.5:3},duration:d});
+  gsap.set('#cellMem',{filter:s.dep?'url(#glow)':'none'});
+  gsap.set('#chNa',{filter:s.chNa?'url(#glow)':'none'});gsap.set('#chCa',{filter:s.chCa?'url(#glow)':'none'});
+}
+
+const gN=$('nerves');
+for(const k in NERVES){const n=NERVES[k];const g=el('g',{class:'nerve',id:'n_'+k},gN);
+  el('path',{class:'case',d:n.d},g);const ax=el('path',{class:'ax',d:n.d,stroke:n.c},g);n.ax=ax;n.g=g;
+  if(n.inib){const L=ax.getTotalLength(),p=ax.getPointAtLength(L),q=ax.getPointAtLength(L-6);const a=Math.atan2(p.y-q.y,p.x-q.x)+Math.PI/2;
+    el('line',{x1:p.x+11*Math.cos(a),y1:p.y+11*Math.sin(a),x2:p.x-11*Math.cos(a),y2:p.y-11*Math.sin(a),stroke:n.c,'stroke-width':5,'stroke-linecap':'round'},g);}}
+const gK=$('nuclei');
+for(const k in NUC){const [x,y,r,t,c]=NUC[k];const g=el('g',{id:'k_'+k},gK);
+  el('circle',{cx:x,cy:y,r:r+5,fill:c,opacity:.16},g);el('circle',{cx:x,cy:y,r,fill:'url(#gNode)',stroke:c,'stroke-width':2.5},g);
+  const parts=t.split(' ');if(parts.length>1){el('text',{x,y:y-2,'text-anchor':'middle',class:'nuc-t'},g).textContent=parts[0];el('text',{x,y:y+13,'text-anchor':'middle',class:'nuc-t'},g).textContent=parts[1];}
+  else el('text',{x,y:y+4.5,'text-anchor':'middle',class:'nuc-t'},g).textContent=t;}
+const gL=$('labels');
+function label(x,y,t,s,lx,ly){const g=el('g',{},gL);
+  if(lx!=null)el('path',{d:`M${x},${y} L${lx},${ly}`,stroke:'var(--label-line)','stroke-width':1.5,fill:'none'},g);
+  const bg=el('rect',{rx:8,fill:'var(--label-bg)',stroke:'var(--label-line)','stroke-width':1},g);
+  const t1=el('text',{x:x+10,y:y+(s?17:19),class:'lab-t'},g);t1.textContent=t;
+  let w=t1.getComputedTextLength();
+  if(s){const t2=el('text',{x:x+10,y:y+32,class:'lab-s'},g);t2.textContent=s;w=Math.max(w,t2.getComputedTextLength());}
+  bg.setAttribute('x',x);bg.setAttribute('y',y);bg.setAttribute('width',w+20);bg.setAttribute('height',s?40:28);}
+LABELS.forEach(a=>label(...a));
+const gP=$('pulses');const pulses=[];
+function setPulses(on,speed){pulses.forEach(p=>p.el.remove());pulses.length=0;if(reduce)return;
+  on.forEach(k=>{const n=NERVES[k];if(!n)return;const L=n.ax.getTotalLength();const cnt=Math.max(2,Math.round(L/110));
+    for(let i=0;i<cnt;i++){const c=el('circle',{r:5.2,fill:'#FFFFFF',stroke:n.c,'stroke-width':3,filter:'url(#glow)'},gP);pulses.push({el:c,ax:n.ax,L,off:i/cnt,v:speed*140/L});}});}
+gsap.ticker.add((t)=>{for(const p of pulses){const f=(t*p.v+p.off)%1;const pt=p.ax.getPointAtLength(f*p.L);p.el.setAttribute('cx',pt.x);p.el.setAttribute('cy',pt.y);p.el.setAttribute('opacity',f<.08?f/.08:f>.92?(1-f)/.08:1);}});
+const gM=$('meters');
+METERS.forEach((m,i)=>{const d=document.createElement('div');d.className='meter';d.setAttribute('aria-label',m.label+' ('+m.sub+')');
+  d.innerHTML=`<div class="bar"><div class="fill" id="fill${i}" style="background:${m.grad}"></div></div><div><strong>${m.label}</strong><small id="ml${i}"></small><small>${m.sub}</small></div>`;gM.appendChild(d);});
+let cur=0,auto=false;
+const rail=$('rail');
+STEPS.forEach((s,i)=>{const b=document.createElement('button');b.type='button';b.innerHTML=`<span class="n">${i+1}</span>${s.r||s.t}`;b.addEventListener('click',()=>{stopAuto();go(i)});rail.appendChild(b)});
+function setNote(n,instant){const g=$('note');gsap.killTweensOf(g);if(!n){gsap.to(g,{opacity:0,duration:instant?0:.2});return}
+  const tx=$('noteTx');tx.textContent=n[2];tx.setAttribute('x',n[0]+12);tx.setAttribute('y',n[1]+20);
+  const w=tx.getComputedTextLength()+24,x=n[0],y=n[1],h=30;
+  $('noteBg').setAttribute('d',`M${x+8},${y} h${w-16} a8,8 0 0 1 8,8 v${h-16} a8,8 0 0 1 -8,8 h${-(w-16)/2+7} l-7,8 l-7,-8 h${-(w-16)/2+7} a8,8 0 0 1 -8,-8 v${-(h-16)} a8,8 0 0 1 8,-8 z`);
+  if(instant||reduce){gsap.set(g,{opacity:1,y:0});return}gsap.fromTo(g,{opacity:0,y:6},{opacity:1,y:0,duration:.4,delay:.35});}
+function render(){const s=STEPS[cur];
+  $('eyebrow').textContent=`Etapa ${cur+1} de ${STEPS.length}`;$('ttl').textContent=s.t;$('txt').textContent=s.x;
+  $('tags').innerHTML=s.tags.map(t=>`<span class="tag${t[1]?' ext':''}">${t[1]?'Complemento externo · ':''}${t[0]}</span>`).join('');
+  METERS.forEach((m,i)=>{$('fill'+i).style.height=(s.m?s.m[i]:50)+'%';$('ml'+i).textContent=s.ml?s.ml[i]:'';});
+  [...rail.children].forEach((b,i)=>{if(i===cur)b.setAttribute('aria-current','step');else b.removeAttribute('aria-current')});
+  $('prev').disabled=cur===0;$('next').disabled=cur===STEPS.length-1;}
+function apply(s,instant){const d=instant||reduce?0:.9;
+  for(const k in NERVES)NERVES[k].g.classList.toggle('on',s.on.includes(k));
+  gsap.to('#focus',{opacity:1,duration:d});
+  gsap.to('#fHalo',{attr:{cx:s.f[0],cy:s.f[1],rx:s.f[2]+22,ry:s.f[3]+22},duration:d,ease:'power2.inOut'});
+  gsap.to('#fRing',{attr:{cx:s.f[0],cy:s.f[1],rx:s.f[2],ry:s.f[3]},duration:d,ease:'power2.inOut'});
+  for(const k in NUC){const on=s.hot.includes(k);gsap.set('#k_'+k,{filter:on?'url(#glow)':'none'});gsap.to('#k_'+k,{scale:on?1.1:1,svgOrigin:`${NUC[k][0]} ${NUC[k][1]}`,duration:d*.6});}
+  setPulses(s.on,s.sp||1);setNote(s.note,instant);FX(s,d,instant);}
+function go(i){cur=Math.max(0,Math.min(STEPS.length-1,i));render();
+  if(!reduce&&cur>0)apply(STEPS[cur-1],true);
+  requestAnimationFrame(()=>apply(STEPS[cur],false));
+  if(auto){clearTimeout(go.t);go.t=setTimeout(()=>{if(!auto)return;if(cur<STEPS.length-1)go(cur+1);else stopAuto()},4800)}}
+function stopAuto(){auto=false;clearTimeout(go.t);$('auto').textContent='▶ Tudo seguido'}
+$('next').addEventListener('click',()=>{stopAuto();go(cur+1)});
+$('prev').addEventListener('click',()=>{stopAuto();go(cur-1)});
+$('replay').addEventListener('click',()=>go(cur));
+$('auto').addEventListener('click',()=>{auto=!auto;$('auto').textContent=auto?'❚❚ Pausar':'▶ Tudo seguido';if(auto)go(cur===STEPS.length-1?0:cur);else stopAuto()});
+document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'){stopAuto();go(cur+1)}if(e.key==='ArrowLeft'){stopAuto();go(cur-1)}});
+render();apply(STEPS[0],true);
+})();
+</script>
+
+</body></html>
