@@ -1,0 +1,239 @@
+<title>Tiazídico no túbulo contorcido distal</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+/* Molde Epítome Summa v2.1 (padrão Barorreflexo v3): palco largo + painel da etapa com medidores; trilho de etapas embaixo. */
+:root{
+  --bg:#EEF2F6; --surface:#FFFFFF; --fg:#16212E; --muted:#56657A; --line:#D3DCE6;
+  --accent:#0B2A4E; --accent-soft:#E2EBF6; --hi:#D9A21B; --hi-soft:#FBF1D6;
+  --sym:#C0392B; --para:#2F80C8; --aff:#0E7C7B; --pur:#7B4FB0; --grn:#3E9A4F;
+  --stage-a:#FDFEFF; --stage-b:#E9EFF5; --tissue:#F6E7E2; --tissue-line:#E6CFC7;
+  --brain-a:#F4EEF8; --brain-b:#E2D5EC; --brain-line:#A893BC;
+  --bone-a:#F3EBD8; --bone-b:#D9C9A6; --mucus:#DDEFF3; --cyto-a:#FFF4F2; --cyto-b:#F7D9D3;
+  --lip-head:#E9B872; --lip-tail:#FBEFD8; --wall:#B4483F; --wall-dark:#8A2F28; --lumen-a:#F08B80; --lumen-b:#C9473D;
+  --node-a:#FFFFFF; --node-b:#EDE6F3; --node-ink:#1E2B3A;
+  --nerve-case:#F7EFD9; --label-bg:rgba(255,255,255,.92); --label-line:#CBD5E1; --ink:#1E2B3A; --ink-soft:#5B6B7E; --blood-a:#FBE3E3;--blood-b:#F2C4C4;--uri-a:#FFF8DC;--uri-b:#F6E7A6;
+  --display:"Bricolage Grotesque", "Trebuchet MS", system-ui, sans-serif;
+  --body:"Atkinson Hyperlegible", "Segoe UI", system-ui, sans-serif;
+  --mono:"JetBrains Mono", ui-monospace, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){ --bg:#0E141B; --surface:#17202A; --fg:#E5ECF3; --muted:#9AABBE; --line:#2A3746;
+  --accent:#8DB6E8; --accent-soft:#1D2B3C; --hi:#F0C04A; --hi-soft:#3A2F12;
+  --stage-a:#1A2430; --stage-b:#111921; --tissue:#2C2224; --tissue-line:#4A3538;
+  --brain-a:#2A2333; --brain-b:#211B29; --brain-line:#7D6A92;
+  --bone-a:#3A3428; --bone-b:#2A251C; --mucus:#1E3138; --cyto-a:#3A2A2C; --cyto-b:#2C1F21;
+  --lip-head:#9C7A45; --lip-tail:#3A3226; --wall:#9A3D35; --wall-dark:#6E2620; --lumen-a:#C9665C; --lumen-b:#8E3129;
+  --node-a:#2F3B4A; --node-b:#1E2733; --node-ink:#F2F6FA;
+  --nerve-case:#3A3527; --label-bg:rgba(23,32,42,.92); --label-line:#3A4A5C; --ink:#E3EAF2; --ink-soft:#A3B3C4; color-scheme:dark --blood-a:#3E2629;--blood-b:#55303A;--uri-a:#3A3524;--uri-b:#4B4428; } }
+:root[data-theme="dark"]{ --bg:#0E141B; --surface:#17202A; --fg:#E5ECF3; --muted:#9AABBE; --line:#2A3746;
+  --accent:#8DB6E8; --accent-soft:#1D2B3C; --hi:#F0C04A; --hi-soft:#3A2F12;
+  --stage-a:#1A2430; --stage-b:#111921; --tissue:#2C2224; --tissue-line:#4A3538;
+  --brain-a:#2A2333; --brain-b:#211B29; --brain-line:#7D6A92;
+  --bone-a:#3A3428; --bone-b:#2A251C; --mucus:#1E3138; --cyto-a:#3A2A2C; --cyto-b:#2C1F21;
+  --lip-head:#9C7A45; --lip-tail:#3A3226; --wall:#9A3D35; --wall-dark:#6E2620; --lumen-a:#C9665C; --lumen-b:#8E3129;
+  --node-a:#2F3B4A; --node-b:#1E2733; --node-ink:#F2F6FA;
+  --nerve-case:#3A3527; --label-bg:rgba(23,32,42,.92); --label-line:#3A4A5C; --ink:#E3EAF2; --ink-soft:#A3B3C4; color-scheme:dark --blood-a:#3E2629;--blood-b:#55303A;--uri-a:#3A3524;--uri-b:#4B4428; }
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:16px;line-height:1.5}
+.wrap{max-width:1180px;margin:0 auto;padding-block:20px 40px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:grid;gap:16px}
+header h1{font-family:var(--display);font-weight:800;font-size:clamp(1.5rem,3.2vw,2.2rem);line-height:1.1;margin:0;text-wrap:balance}
+header p{margin:.35rem 0 0;color:var(--muted);max-width:68ch}
+.main{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:16px;align-items:start}
+@media (max-width:860px){.main{grid-template-columns:minmax(0,1fr)}}
+.stage{border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:0 8px 28px rgba(11,42,78,.08);background:var(--stage-a)}
+.stage svg{display:block;width:100%;height:auto}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:16px;display:grid;gap:12px;min-width:0;box-shadow:0 8px 28px rgba(11,42,78,.06)}
+.eyebrow{font-family:var(--mono);font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:var(--para)}
+.panel h2{font-family:var(--display);font-weight:600;font-size:1.25rem;line-height:1.2;margin:0;text-wrap:balance}
+.panel .txt{margin:0}
+.tag{display:inline-block;font-size:.75rem;padding:2px 8px;border-radius:99px;border:1px solid var(--line);color:var(--muted);margin:0 4px 4px 0}
+.tag.ext{border-color:var(--hi);color:var(--fg);background:var(--hi-soft)}
+.meters{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.meters:empty{display:none}
+.meter{display:grid;grid-template-columns:26px 1fr;gap:8px;align-items:stretch}
+.bar{position:relative;height:124px;border-radius:9px;border:1px solid var(--line);background:repeating-linear-gradient(to top,var(--bg) 0 23px,var(--line) 23px 24px);overflow:hidden}
+.fill{position:absolute;left:3px;right:3px;bottom:3px;height:50%;border-radius:6px;transition:height .6s cubic-bezier(.3,.7,.3,1)}
+.meter strong{font-size:.9rem}
+.meter small{color:var(--muted);font-size:.78rem;display:block}
+.controls{display:flex;flex-wrap:wrap;gap:8px}
+button{font-family:var(--body);font-size:.95rem;border-radius:10px;border:1px solid var(--line);background:var(--surface);color:var(--fg);padding:8px 14px;cursor:pointer}
+button.primary{background:var(--accent);border-color:var(--accent);color:var(--surface);font-weight:700}
+button:focus-visible{outline:3px solid var(--hi);outline-offset:2px}
+button:disabled{opacity:.45;cursor:default}
+.rail{display:flex;flex-wrap:wrap;gap:6px}
+.rail button{padding:6px 10px;font-size:.82rem;display:flex;gap:6px;align-items:center}
+.rail button .n{font-family:var(--mono);color:var(--muted)}
+.rail button[aria-current="step"]{border-color:var(--accent);background:var(--accent-soft)}
+.rail button[aria-current="step"] .n{color:var(--accent)}
+.legend{display:flex;flex-wrap:wrap;gap:14px;font-size:.85rem;color:var(--muted)}
+.legend i{display:inline-block;width:18px;height:5px;border-radius:3px;margin-right:6px;vertical-align:3px}
+.legend b{display:inline-block;width:11px;height:11px;border-radius:50%;margin-right:6px;vertical-align:-1px}
+footer{font-size:.8rem;color:var(--muted);border-top:1px solid var(--line);padding-top:12px;display:grid;gap:4px}
+svg text{font-family:var(--body)}
+.lab-t{font-size:14px;font-weight:700;fill:var(--ink)}
+.lab-s{font-size:11.5px;fill:var(--ink-soft)}
+.nuc-t{font-size:13px;font-weight:700;fill:var(--node-ink)}
+.comp-t{font-size:12px;font-weight:700;fill:var(--ink)}
+.comp-t2{font-size:11px;font-weight:700;fill:#1B1B1B}
+.comp-t3{font-size:9px;font-weight:700;fill:#1B1B1B}
+.ion-t{font-size:8.5px;font-weight:700;fill:#fff}
+.nerve .case{fill:none;stroke:var(--nerve-case);stroke-width:11;stroke-linecap:round}
+.nerve .ax{fill:none;stroke-width:4.5;stroke-linecap:round}
+.nerve{opacity:.3;transition:opacity .5s}
+.nerve.on{opacity:1}
+@media (prefers-reduced-motion: reduce){ .fill,.nerve{transition:none} }
+</style>
+
+<div class="wrap">
+  <header>
+    <h1>Tiazídico no túbulo contorcido distal</h1>
+    <p>Do simporte Na⁺/Cl⁻ bloqueado ao K⁺ perdido no ducto coletor e ao cálcio poupado.</p>
+  </header>
+  <div class="main">
+    <div class="stage">
+      <svg id="svg" viewBox="0 0 1000 560" role="img" aria-label="Célula do túbulo contorcido distal entre o lúmen tubular à esquerda e o sangue à direita, com o simporte Na⁺/Cl⁻ na membrana luminal, a Na⁺/K⁺-ATPase e o canal de Cl⁻ na basolateral, a mácula densa acima e o ducto coletor abaixo.">
+        <defs>
+          <linearGradient id="gStage" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--stage-a)"/><stop offset="1" stop-color="var(--stage-b)"/></linearGradient>
+          <linearGradient id="gBrain" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--brain-a)"/><stop offset="1" stop-color="var(--brain-b)"/></linearGradient>
+          <linearGradient id="gBone" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--bone-a)"/><stop offset="1" stop-color="var(--bone-b)"/></linearGradient>
+          <linearGradient id="gLumen" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="var(--lumen-b)"/><stop offset=".45" stop-color="var(--lumen-a)"/><stop offset="1" stop-color="var(--lumen-b)"/></linearGradient>
+          <radialGradient id="gCyto" cx=".4" cy=".3" r=".8"><stop offset="0" stop-color="var(--cyto-a)"/><stop offset="1" stop-color="var(--cyto-b)"/></radialGradient>
+          <radialGradient id="gNode" cx=".35" cy=".3" r=".8"><stop offset="0" stop-color="var(--node-a)"/><stop offset="1" stop-color="var(--node-b)"/></radialGradient>
+          <radialGradient id="gHalo"><stop offset="0" stop-color="var(--hi)" stop-opacity=".22"/><stop offset=".75" stop-color="var(--hi)" stop-opacity=".08"/><stop offset="1" stop-color="var(--hi)" stop-opacity="0"/></radialGradient>
+          <radialGradient id="gHeart" cx=".38" cy=".3" r=".8"><stop offset="0" stop-color="#E88A7E"/><stop offset=".55" stop-color="#C2463B"/><stop offset="1" stop-color="#7E2620"/></radialGradient>
+          <radialGradient id="gGa" cx=".35" cy=".3" r=".8"><stop offset="0" stop-color="#FCE7A8"/><stop offset="1" stop-color="#E0A92A"/></radialGradient>
+          <radialGradient id="gGb" cx=".35" cy=".3" r=".8"><stop offset="0" stop-color="#E5D6F4"/><stop offset="1" stop-color="#A585CC"/></radialGradient>
+          <filter id="glow" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+          <filter id="soft" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#0B2A4E" flood-opacity=".14"/></filter>
+          <pattern id="pTissue" width="18" height="18" patternUnits="userSpaceOnUse"><circle cx="4" cy="4" r="1.2" fill="var(--tissue-line)"/><circle cx="13" cy="12" r="1" fill="var(--tissue-line)"/></pattern>
+          <pattern id="pBicamada" width="12" height="22" patternUnits="userSpaceOnUse" y="-11"><circle cx="6" cy="3.5" r="3.4" fill="var(--lip-head)"/><circle cx="6" cy="18.5" r="3.4" fill="var(--lip-head)"/><path d="M4.5,7 v4 M7.5,7 v4 M4.5,11 v4 M7.5,11 v4" stroke="var(--lip-head)" stroke-width="1" opacity=".6"/></pattern>
+          <marker id="mSeta" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="var(--ink-soft)"/></marker>
+          <linearGradient id='gLum' x1='0' y1='0' x2='0' y2='1'><stop offset='0' style='stop-color:var(--uri-a)'/><stop offset='1' style='stop-color:var(--uri-b)'/></linearGradient><linearGradient id='gCel' x1='0' y1='0' x2='1' y2='1'><stop offset='0' style='stop-color:var(--cyto-a)'/><stop offset='1' style='stop-color:var(--cyto-b)'/></linearGradient><linearGradient id='gSang' x1='0' y1='0' x2='1' y2='0'><stop offset='0' style='stop-color:var(--blood-a)'/><stop offset='1' style='stop-color:var(--blood-b)'/></linearGradient>
+        </defs>
+        <rect width="1000" height="560" fill="url(#gStage)"/>
+        <rect x='60' y='100' width='270' height='370' rx='22' fill='url(#gLum)' stroke='var(--tissue-line)' stroke-width='2'/><path d='M330 104 Q510 84 690 104 L690 466 Q510 486 330 466 Z' fill='url(#gCel)' stroke='var(--tissue-line)' stroke-width='2'/><ellipse cx='520' cy='300' rx='54' ry='40' fill='var(--node-a)' stroke='var(--node-b)' stroke-width='2'/><ellipse cx='508' cy='292' rx='14' ry='10' fill='var(--node-b)' opacity='.55'/><rect x='740' y='120' width='210' height='330' rx='100' fill='url(#gSang)' stroke='var(--wall-dark)' stroke-width='2'/><g id='md' opacity='.85'><circle cx='92' cy='122' r='13' fill='var(--pur)' opacity='.55'/><circle cx='118' cy='118' r='13' fill='var(--pur)' opacity='.55'/><circle cx='144' cy='122' r='13' fill='var(--pur)' opacity='.55'/></g><rect id='ducto' x='60' y='478' width='270' height='66' rx='16' fill='var(--cyto-a)' stroke='var(--tissue-line)' stroke-width='2'/>
+        <g fill="none" stroke-linecap="round"><path d="M330 112 L330 458" stroke="var(--lip-head)" stroke-width="22"/><path d="M330 112 L330 458" stroke="var(--lip-tail)" stroke-width="12.1"/><path d="M330 112 L330 458" stroke="var(--lip-head)" stroke-width="4.0" stroke-dasharray="1 5" opacity=".7"/></g><g fill="none" stroke-linecap="round"><path d="M690 112 L690 458" stroke="var(--lip-head)" stroke-width="22"/><path d="M690 112 L690 458" stroke="var(--lip-tail)" stroke-width="12.1"/><path d="M690 112 L690 458" stroke="var(--lip-head)" stroke-width="4.0" stroke-dasharray="1 5" opacity=".7"/></g><g id="ncc" transform="translate(330 200)" filter="url(#soft)"><ellipse rx="45" ry="27" fill="var(--aff)" opacity=".14"/><ellipse rx="40" ry="22" fill="url(#gNode)" stroke="var(--aff)" stroke-width="2.5"/><text y="4.5" text-anchor="middle" class="nuc-t">Na⁺/Cl⁻</text></g><g id="atp" transform="translate(690 200)" filter="url(#soft)"><ellipse rx="55" ry="27" fill="var(--para)" opacity=".14"/><ellipse rx="50" ry="22" fill="url(#gNode)" stroke="var(--para)" stroke-width="2.5"/><text y="4.5" text-anchor="middle" class="nuc-t">Na⁺/K⁺-ATPase</text></g><g id="chCl" transform="translate(690 320) rotate(90)" filter="url(#soft)"><g id="chCl_a"><rect x="-17" y="-17" width="15" height="34" rx="6" fill="var(--grn)" stroke="#1D5A93" stroke-width="1.5"/><rect x="-14" y="-13" width="4" height="26" rx="2" fill="#fff" opacity=".25"/></g><g id="chCl_b"><rect x="2" y="-17" width="15" height="34" rx="6" fill="var(--grn)" stroke="#1D5A93" stroke-width="1.5"/></g><text x="0" y="-26" text-anchor="middle" class="comp-t">Cl⁻</text></g><g id="chCa" transform="translate(330 400) rotate(90)" filter="url(#soft)"><g id="chCa_a"><rect x="-17" y="-17" width="15" height="34" rx="6" fill="var(--pur)" stroke="#1D5A93" stroke-width="1.5"/><rect x="-14" y="-13" width="4" height="26" rx="2" fill="#fff" opacity=".25"/></g><g id="chCa_b"><rect x="2" y="-17" width="15" height="34" rx="6" fill="var(--pur)" stroke="#1D5A93" stroke-width="1.5"/></g><text x="0" y="-26" text-anchor="middle" class="comp-t">Ca²⁺</text></g><g id="tz" transform="translate(292 160)"><polygon points="16.0,0.0 8.0,13.9 -8.0,13.9 -16.0,0.0 -8.0,-13.9 8.0,-13.9" fill="var(--sym)" stroke="#7A5A00" stroke-width="1.5"/><text y="30" text-anchor="middle" class="comp-t">tiazídico</text></g><g id="naLum"><g transform="translate(130 180)"><circle r="7" fill="#2F80C8" stroke="#fff" stroke-width="1.3"/></g><g transform="translate(185 236)"><circle r="7" fill="#2F80C8" stroke="#fff" stroke-width="1.3"/></g><g transform="translate(245 168)"><circle r="7" fill="#2F80C8" stroke="#fff" stroke-width="1.3"/></g><g transform="translate(150 300)"><circle r="7" fill="#2F80C8" stroke="#fff" stroke-width="1.3"/></g><g transform="translate(235 332)"><circle r="7" fill="#2F80C8" stroke="#fff" stroke-width="1.3"/></g></g><g id="kDuct"><g transform="translate(110 512)"><circle r="7" fill="#C98A12" stroke="#fff" stroke-width="1.3"/></g><g transform="translate(170 506)"><circle r="7" fill="#C98A12" stroke="#fff" stroke-width="1.3"/></g><g transform="translate(230 514)"><circle r="7" fill="#C98A12" stroke="#fff" stroke-width="1.3"/></g></g><g id="caCel"><g transform="translate(420 398)"><circle r="7" fill="#8E5CC8" stroke="#fff" stroke-width="1.3"/></g><g transform="translate(470 410)"><circle r="7" fill="#8E5CC8" stroke="#fff" stroke-width="1.3"/></g><g transform="translate(600 402)"><circle r="7" fill="#8E5CC8" stroke="#fff" stroke-width="1.3"/></g></g><path id="setaDuct" d="M195 360 C195 410 195 440 195 472" fill="none" stroke="var(--aff)" stroke-width="2.5" marker-end="url(#mSeta)" stroke-linecap="round"/>
+        <g id="focus" opacity="0" pointer-events="none">
+          <ellipse id="fHalo" cx="0" cy="0" rx="10" ry="10" fill="url(#gHalo)"/>
+          <ellipse id="fRing" cx="0" cy="0" rx="10" ry="10" fill="none" stroke="var(--hi)" stroke-width="3" stroke-dasharray="9 7"/>
+        </g>
+        <g id="nerves"></g><g id="nuclei"></g><g id="flows"></g><g id="labels"></g><g id="pulses"></g>
+        <g id="note" opacity="0"><path id="noteBg" fill="var(--hi)"/><text id="noteTx" style="font-size:13.5px;font-weight:700;fill:#1B1B1B"></text></g>
+      </svg>
+    </div>
+    <aside class="panel" aria-live="polite">
+      <div class="eyebrow" id="eyebrow">Etapa 1</div>
+      <h2 id="ttl"></h2>
+      <p class="txt" id="txt"></p>
+      <div id="tags"></div>
+      <div class="meters" id="meters"></div>
+      <div class="controls">
+        <button id="prev" type="button">← Anterior</button>
+        <button id="replay" type="button">↻ Rever</button>
+        <button id="next" type="button" class="primary">Próxima →</button>
+        <button id="auto" type="button">▶ Tudo seguido</button>
+      </div>
+    </aside>
+  </div>
+  <nav class="rail" id="rail" aria-label="Etapas"></nav>
+  <div class="legend"><span><b style="background:#2F80C8"></b>Na⁺/NaCl</span><span><b style="background:#3BA06A"></b>Cl⁻</span><span><b style="background:#C98A12"></b>K⁺</span><span><b style="background:#8E5CC8"></b>Ca²⁺</span><span><i style="background:var(--hi)"></i>etapa ativa</span></div>
+  <footer><div>Conteúdo: aula de Farmacologia renal (01:26:12–01:29:37), slide 25.</div><div>Ilustração esquemática desenhada para este Estudo Guiado.</div></footer>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script>
+(function(){
+const D={"vias": {}, "fluxos": {"nclIn": {"d": "M220 200 L440 200", "cor": "#2F80C8", "rotulo": "NaCl", "n": 3}, "naOut": {"d": "M600 192 L870 192", "cor": "#2F80C8", "rotulo": "Na⁺", "n": 3}, "kIn": {"d": "M870 238 L610 238", "cor": "#C98A12", "rotulo": "K⁺", "n": 2}, "clOut": {"d": "M570 320 L870 320", "cor": "#3BA06A", "rotulo": "Cl⁻", "n": 2}, "lumDown": {"d": "M195 150 L195 472", "cor": "#2F80C8", "rotulo": "NaCl fica", "n": 3}, "kSai": {"d": "M300 500 L240 526 L80 526", "cor": "#C98A12", "rotulo": "K⁺ perdido", "n": 3}, "caIn": {"d": "M200 400 L870 400", "cor": "#8E5CC8", "rotulo": "Ca²⁺", "n": 3}}, "nucleos": {"MD": [118, 120, 30, "MD", "var(--pur)"]}, "rotulos": [[190, 70, "Lúmen do TCD", "urina em formação", 190, 102], [510, 62, "Célula do TCD", "pós-mácula densa", 510, 92], [845, 70, "Sangue", "capilar peritubular", 845, 120], [480, 500, "Ducto coletor", "logo adiante", 330, 510]], "medidores": [{"nome": "NaCl na urina", "sub": "esquemático", "cor": ["#A9CDF0", "var(--aff)"]}, {"nome": "Ca²⁺ na urina", "sub": "esquemático", "cor": ["#D7C3F0", "var(--pur)"]}], "etapas": [{"t": "Célula do túbulo contorcido distal", "r": "Célula do TCD", "x": "O TCD vem logo depois da mácula densa. A célula tem a face luminal, voltada para a urina, e a basolateral, voltada para o sangue. Aqui se reabsorve cerca de 10% do NaCl filtrado.", "tags": ["Aula 01:26:12"], "foco": [510, 285, 340, 215], "m": [20, 50], "ml": ["basal", "basal"], "S": {"#tz": {"opacity": 0}, "#kDuct": {"opacity": 0}, "#caCel": {"opacity": 0}, "#setaDuct": {"opacity": 0}, "#chCl_b": {"x": 0}, "#ncc": {"brilho": 0}, "#atp": {"brilho": 0}, "#chCl_a": {"x": 0}, "#chCa_b": {"x": 0}, "#chCa": {"brilho": 0}, "#chCa_a": {"x": 0}}}, {"t": "Simporte Na⁺/Cl⁻ traz NaCl do lúmen", "r": "Simporte Na⁺/Cl⁻", "x": "Na membrana luminal, o simporte Na⁺/Cl⁻ leva um Na⁺ e um Cl⁻ juntos (1:1) do lúmen para dentro da célula. É uma reabsorção simples de NaCl.", "tags": ["Aula 01:26:12"], "foco": [330, 200, 95, 60], "on": ["nclIn"], "S": {"#tz": {"opacity": 0}, "#kDuct": {"opacity": 0}, "#caCel": {"opacity": 0}, "#setaDuct": {"opacity": 0}, "#ncc": {"brilho": 1}, "#chCl_b": {"x": 0}, "#atp": {"brilho": 0}, "#chCl_a": {"x": 0}, "#chCa_b": {"x": 0}, "#chCa": {"brilho": 0}, "#chCa_a": {"x": 0}}}, {"t": "Bomba leva Na⁺ ao sangue e Cl⁻ sai por canal", "r": "Saída basolateral", "x": "Na face basolateral, a Na⁺/K⁺-ATPase joga o Na⁺ no sangue e traz K⁺ de volta; o Cl⁻ sai por um canal de cloreto. O NaCl reabsorvido chega ao sangue.", "tags": ["Aula 01:26:43"], "foco": [700, 260, 120, 125], "on": ["naOut", "kIn", "clOut"], "S": {"#tz": {"opacity": 0}, "#kDuct": {"opacity": 0}, "#caCel": {"opacity": 0}, "#setaDuct": {"opacity": 0}, "#ncc": {"brilho": 0}, "#atp": {"brilho": 1}, "#chCl_a": {"x": -7}, "#chCl_b": {"x": 7}, "#chCa_b": {"x": 0}, "#chCa": {"brilho": 0}, "#chCa_a": {"x": 0}}}, {"t": "Tiazídico bloqueia o simporte Na⁺/Cl⁻", "r": "Tiazídico bloqueia", "x": "Hidroclorotiazida, clortalidona e indapamida bloqueiam o simporte Na⁺/Cl⁻ do TCD. Não é o Na⁺/K⁺/2Cl⁻ da alça nem o ducto coletor: a prova troca o segmento ou o transportador.", "tags": ["Aula 01:26:43", "Slide 25"], "foco": [300, 200, 95, 62], "nota": [200, 240, "simporte bloqueado"], "m": [55, 50], "ml": ["↑", "basal"], "S": {"#tz": {"opacity": 1}, "#kDuct": {"opacity": 0}, "#caCel": {"opacity": 0}, "#setaDuct": {"opacity": 0}, "#ncc": {"brilho": 0}, "#atp": {"brilho": 0}, "#chCl_a": {"x": 0}, "#chCl_b": {"x": 0}, "#chCa_b": {"x": 0}, "#chCa": {"brilho": 0}, "#chCa_a": {"x": 0}}}, {"t": "NaCl fica no lúmen e segue ao ducto coletor", "r": "NaCl segue", "x": "Sem o simporte, o NaCl fica no lúmen e desce para o ducto coletor. Sai mais sódio na urina, e a água acompanha: é a diurese do tiazídico.", "tags": ["Aula 01:26:56"], "foco": [195, 320, 115, 175], "on": ["lumDown"], "m": [75, 50], "ml": ["↑", "basal"], "S": {"#tz": {"opacity": 1}, "#kDuct": {"opacity": 0}, "#caCel": {"opacity": 0}, "#setaDuct": {"opacity": 1}, "#ncc": {"brilho": 0}, "#atp": {"brilho": 0}, "#chCl_a": {"x": 0}, "#chCl_b": {"x": 0}, "#chCa_b": {"x": 0}, "#chCa": {"brilho": 0}, "#chCa_a": {"x": 0}}}, {"t": "No ducto coletor, Na⁺ volta e K⁺ é perdido", "r": "K⁺ perdido", "x": "No ducto coletor, parte desse Na⁺ extra é reabsorvida e, em troca, o K⁺ vai embora na urina. Por isso o tiazídico também é espoliador de potássio; o magnésio também se perde.", "tags": ["Aula 01:26:56", "Aula 01:27:19"], "foco": [195, 508, 160, 52], "on": ["kSai"], "S": {"#tz": {"opacity": 1}, "#kDuct": {"opacity": 1}, "#caCel": {"opacity": 0}, "#setaDuct": {"opacity": 1}, "#ncc": {"brilho": 0}, "#atp": {"brilho": 0}, "#chCl_a": {"x": 0}, "#chCl_b": {"x": 0}, "#chCa_b": {"x": 0}, "#chCa": {"brilho": 0}, "#chCa_a": {"x": 0}}}, {"t": "Cálcio: reabsorção aumenta", "r": "Poupa Ca²⁺", "x": "O cálcio faz o contrário da alça: a reabsorção aumenta e sai menos Ca²⁺ na urina. Por isso trata cálculo de cálcio e serve na osteoporose da menopausa. O mecanismo exato não está esclarecido (PTH? calcitriol?).", "tags": ["Aula 01:28:19"], "foco": [460, 400, 280, 62], "on": ["caIn"], "nota": [470, 450, "menos Ca²⁺ na urina"], "m": [75, 18], "ml": ["↑", "↓ poupa"], "S": {"#tz": {"opacity": 1}, "#kDuct": {"opacity": 1}, "#caCel": {"opacity": 1}, "#setaDuct": {"opacity": 1}, "#ncc": {"brilho": 0}, "#atp": {"brilho": 0}, "#chCl_a": {"x": 0}, "#chCl_b": {"x": 0}, "#chCa_a": {"x": -7}, "#chCa_b": {"x": 7}, "#chCa": {"brilho": 1}}}, {"t": "Depois da mácula densa: renina quase não muda", "r": "Renina estável", "x": "Como age depois da mácula densa, o tiazídico mexe muito pouco no fluxo sanguíneo renal e na renina. É a diferença para a furosemida, que bloqueia o transportador da própria mácula densa.", "tags": ["Aula 01:29:09"], "foco": [118, 125, 80, 48], "hot": ["MD"], "S": {"#tz": {"opacity": 1}, "#kDuct": {"opacity": 1}, "#caCel": {"opacity": 1}, "#setaDuct": {"opacity": 1}, "#ncc": {"brilho": 0}, "#atp": {"brilho": 0}, "#chCl_a": {"x": 0}, "#chCl_b": {"x": 0}, "#chCa_a": {"x": -7}, "#chCa_b": {"x": 7}, "#chCa": {"brilho": 0}}}]};
+const NS='http://www.w3.org/2000/svg';
+const $=id=>document.getElementById(id);
+const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+function el(tag,attrs,parent){const e=document.createElementNS(NS,tag);for(const k in attrs)e.setAttribute(k,attrs[k]);if(parent)parent.appendChild(e);return e}
+const NERVES=D.vias, FLOWS=D.fluxos, NUC=D.nucleos, STEPS=D.etapas;
+const gN=$('nerves');
+for(const k in NERVES){const n=NERVES[k];n.c=n.cor||n.c||'var(--aff)';const g=el('g',{class:'nerve',id:'n_'+k},gN);
+  el('path',{class:'case',d:n.d},g);const ax=el('path',{class:'ax',d:n.d,stroke:n.c},g);n.ax=ax;n.g=g;
+  if(n.inib){const L=ax.getTotalLength(),p=ax.getPointAtLength(L),q=ax.getPointAtLength(L-6);const a=Math.atan2(p.y-q.y,p.x-q.x)+Math.PI/2;
+    el('line',{x1:p.x+11*Math.cos(a),y1:p.y+11*Math.sin(a),x2:p.x-11*Math.cos(a),y2:p.y-11*Math.sin(a),stroke:n.c,'stroke-width':5,'stroke-linecap':'round'},g);}}
+const gF=$('flows');
+for(const k in FLOWS){const f=FLOWS[k];f.ax=el('path',{d:f.d,fill:'none',stroke:'none'},gF);}
+const gK=$('nuclei');
+for(const k in NUC){const [x,y,r,t,c]=NUC[k];const g=el('g',{id:'k_'+k},gK);
+  el('circle',{cx:x,cy:y,r:r+5,fill:c,opacity:.16},g);el('circle',{cx:x,cy:y,r,fill:'url(#gNode)',stroke:c,'stroke-width':2.5},g);
+  const parts=t.split(' ');if(parts.length>1){el('text',{x,y:y-2,'text-anchor':'middle',class:'nuc-t'},g).textContent=parts[0];el('text',{x,y:y+13,'text-anchor':'middle',class:'nuc-t'},g).textContent=parts.slice(1).join(' ');}
+  else el('text',{x,y:y+4.5,'text-anchor':'middle',class:'nuc-t'},g).textContent=t;}
+const gL=$('labels');
+function label(x,y,t,s,lx,ly){const g=el('g',{},gL);
+  if(lx!=null)el('path',{d:`M${x},${y} L${lx},${ly}`,stroke:'var(--label-line)','stroke-width':1.5,fill:'none'},g);
+  const bg=el('rect',{rx:8,fill:'var(--label-bg)',stroke:'var(--label-line)','stroke-width':1},g);
+  const t1=el('text',{x:x+10,y:y+(s?17:19),class:'lab-t'},g);t1.textContent=t;
+  let w=t1.getComputedTextLength();
+  if(s){const t2=el('text',{x:x+10,y:y+32,class:'lab-s'},g);t2.textContent=s;w=Math.max(w,t2.getComputedTextLength());}
+  bg.setAttribute('x',x);bg.setAttribute('y',y);bg.setAttribute('width',w+20);bg.setAttribute('height',s?40:28);}
+D.rotulos.forEach(a=>label(...a));
+const gP=$('pulses');const pulses=[];
+function setPulses(on,speed){pulses.forEach(p=>p.el.remove());pulses.length=0;if(reduce)return;
+  on.forEach(k=>{
+    if(NERVES[k]){const n=NERVES[k];const L=n.ax.getTotalLength();const cnt=Math.max(2,Math.round(L/110));
+      for(let i=0;i<cnt;i++){const c=el('circle',{r:5.2,fill:'#FFFFFF',stroke:n.c,'stroke-width':3,filter:'url(#glow)'},gP);pulses.push({el:c,ax:n.ax,L,off:i/cnt,v:speed*140/L});}}
+    else if(FLOWS[k]){const f=FLOWS[k];const L=f.ax.getTotalLength();const cnt=f.n||3;
+      for(let i=0;i<cnt;i++){const g=el('g',{},gP);el('circle',{r:f.r||7,fill:f.cor||'#2F80C8',stroke:'#fff','stroke-width':1.3},g);
+        if(f.rotulo&&(f.r||7)>=8){const t=el('text',{y:3,'text-anchor':'middle',class:'ion-t'},g);t.textContent=f.rotulo;}
+        pulses.push({el:g,ax:f.ax,L,off:i/cnt,v:(f.v||speed)*90/L,grp:true});}}});}
+gsap.ticker.add((t)=>{for(const p of pulses){const f=(t*p.v+p.off)%1;const pt=p.ax.getPointAtLength(f*p.L);
+  if(p.grp)p.el.setAttribute('transform',`translate(${pt.x} ${pt.y})`);else{p.el.setAttribute('cx',pt.x);p.el.setAttribute('cy',pt.y);}
+  p.el.setAttribute('opacity',f<.08?f/.08:f>.92?(1-f)/.08:1);}});
+const gM=$('meters');
+D.medidores.forEach((m,i)=>{const d=document.createElement('div');d.className='meter';d.setAttribute('aria-label',m.nome+' ('+(m.sub||'')+')');
+  const c=m.cor||['#A9CDF0','var(--para)'];
+  d.innerHTML=`<div class="bar"><div class="fill" id="fill${i}" style="background:linear-gradient(to top,${c[0]},${c[1]})"></div></div><div><strong>${m.nome}</strong><small id="ml${i}"></small><small>${m.sub||''}</small></div>`;gM.appendChild(d);});
+const loops={};
+function applyState(S,d){
+  for(const sel in S){const p=S[sel];const v={duration:p.dur!=null&&d?p.dur:d,ease:p.ease==='elastic'?'elastic.out(1,.6)':(p.ease||'power2.inOut')};let anim=false;
+    for(const k of ['opacity','x','y','scale','rotate']){if(p[k]!=null){v[k]=Array.isArray(p[k])?(i=>p[k][i%p[k].length]):p[k];anim=true}}
+    if(p.origem)v.svgOrigin=p.origem;
+    if(p.attr){v.attr=Object.assign({},p.attr);anim=true}
+    if(p.fill!=null){v.attr=Object.assign(v.attr||{},{fill:p.fill});anim=true}
+    if(p.stroke!=null){v.attr=Object.assign(v.attr||{},{stroke:p.stroke});anim=true}
+    if(p.stagger&&d)v.stagger=p.stagger;
+    const alvo=sel.includes(' ')?sel:document.querySelector(sel);if(!alvo)continue;
+    if(anim)gsap.to(sel.includes(' ')?sel:alvo,v);
+    if(p.brilho!=null)gsap.set(alvo,{filter:p.brilho?'url(#glow)':'none'});
+    if(p.pulsar!=null){if(loops[sel]){loops[sel].kill();delete loops[sel];gsap.set(alvo,{scale:p.scale||1})}
+      if(p.pulsar&&!reduce){loops[sel]=gsap.to(alvo,{scale:1.07,svgOrigin:p.origem,duration:p.pulsar/2,yoyo:true,repeat:-1,ease:'sine.inOut'})}}}}
+let cur=0,auto=false;
+const rail=$('rail');
+STEPS.forEach((s,i)=>{const b=document.createElement('button');b.type='button';b.innerHTML=`<span class="n">${i+1}</span>${s.r||s.t}`;b.addEventListener('click',()=>{stopAuto();go(i)});rail.appendChild(b)});
+function setNote(n,instant){const g=$('note');gsap.killTweensOf(g);if(!n){gsap.to(g,{opacity:0,duration:instant?0:.2});return}
+  const tx=$('noteTx');tx.textContent=n[2];tx.setAttribute('x',n[0]+12);tx.setAttribute('y',n[1]+20);
+  const w=tx.getComputedTextLength()+24,x=n[0],y=n[1],h=30;
+  $('noteBg').setAttribute('d',`M${x+8},${y} h${w-16} a8,8 0 0 1 8,8 v${h-16} a8,8 0 0 1 -8,8 h${-(w-16)/2+7} l-7,8 l-7,-8 h${-(w-16)/2+7} a8,8 0 0 1 -8,-8 v${-(h-16)} a8,8 0 0 1 8,-8 z`);
+  if(instant||reduce){gsap.set(g,{opacity:1,y:0});return}gsap.fromTo(g,{opacity:0,y:6},{opacity:1,y:0,duration:.4,delay:.35});}
+function tagsHtml(tags){return (tags||[]).map(t=>{const a=Array.isArray(t)?t:[t,0];const ext=a[1]&&a[1]!==0;return `<span class="tag${ext?' ext':''}">${ext?'Complemento externo · ':''}${a[0]}</span>`}).join('')}
+function render(){const s=STEPS[cur];
+  $('eyebrow').textContent=`Etapa ${cur+1} de ${STEPS.length}`;$('ttl').textContent=s.t;$('txt').textContent=s.x;
+  $('tags').innerHTML=tagsHtml(s.tags);
+  D.medidores.forEach((m,i)=>{$('fill'+i).style.height=(s.m?s.m[i]:50)+'%';$('ml'+i).textContent=s.ml?s.ml[i]:'';});
+  [...rail.children].forEach((b,i)=>{if(i===cur)b.setAttribute('aria-current','step');else b.removeAttribute('aria-current')});
+  $('prev').disabled=cur===0;$('next').disabled=cur===STEPS.length-1;}
+function apply(s,instant){const d=instant||reduce?0:.9;const on=s.on||[];
+  for(const k in NERVES)NERVES[k].g.classList.toggle('on',on.includes(k));
+  const f=s.foco||[500,280,120,90];
+  gsap.to('#focus',{opacity:1,duration:d});
+  gsap.to('#fHalo',{attr:{cx:f[0],cy:f[1],rx:f[2]+22,ry:f[3]+22},duration:d,ease:'power2.inOut'});
+  gsap.to('#fRing',{attr:{cx:f[0],cy:f[1],rx:f[2],ry:f[3]},duration:d,ease:'power2.inOut'});
+  for(const k in NUC){const h=(s.hot||[]).includes(k);gsap.set('#k_'+k,{filter:h?'url(#glow)':'none'});gsap.to('#k_'+k,{scale:h?1.1:1,svgOrigin:`${NUC[k][0]} ${NUC[k][1]}`,duration:d*.6});}
+  setPulses(on,s.sp||1);setNote(s.nota,instant);applyState(s.S||{},d);}
+function go(i){cur=Math.max(0,Math.min(STEPS.length-1,i));render();
+  if(!reduce&&cur>0)apply(STEPS[cur-1],true);
+  requestAnimationFrame(()=>apply(STEPS[cur],false));
+  if(auto){clearTimeout(go.t);go.t=setTimeout(()=>{if(!auto)return;if(cur<STEPS.length-1)go(cur+1);else stopAuto()},4800)}}
+function stopAuto(){auto=false;clearTimeout(go.t);$('auto').textContent='▶ Tudo seguido'}
+$('next').addEventListener('click',()=>{stopAuto();go(cur+1)});
+$('prev').addEventListener('click',()=>{stopAuto();go(cur-1)});
+$('replay').addEventListener('click',()=>go(cur));
+$('auto').addEventListener('click',()=>{auto=!auto;$('auto').textContent=auto?'❚❚ Pausar':'▶ Tudo seguido';if(auto)go(cur===STEPS.length-1?0:cur);else stopAuto()});
+document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'){stopAuto();go(cur+1)}if(e.key==='ArrowLeft'){stopAuto();go(cur-1)}});
+window.__anim={go,n:STEPS.length};
+render();apply(STEPS[0],true);
+})();
+</script>
